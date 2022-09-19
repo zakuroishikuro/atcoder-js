@@ -26,6 +26,6 @@ pnpm jest --watch
 
 [Jest CLI オプション · Jest](https://jestjs.io/ja/docs/cli#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%8B%E3%82%89%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B)
 
-# なんでjest v28なの？
+# 使ってるライブラリのバージョン古くね？
 
-jest v29からはnode v12が切り捨てられたから
+node v12はサポート終了済みで切り捨てられまくってる為、v12で使える最新
