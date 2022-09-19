@@ -3,6 +3,8 @@
     "jest": "v28.1.3"
   },
   "scripts": {
-    "test": "jest"
+    "new": "node _src/new.js",
+    "test": "jest --watch --testMatch '<rootDir>/probrems/**/*.[jt]s?(x)'",
+    "test:src": "jest --watch --testMatch '<rootDir>/_src/**/*.test.[jt]s?(x)'"
   }
 }

@@ -1,6 +1,6 @@
 function main(input = "") {
   const [a, b, c, d] = input.split(/\s/).map(Number);
-  return `${(a + b) * (c - d)}\nTakahash`;
+  return `${(a + b) * (c - d)}\nTakahashi`;
 }
 
 if (require.main === module) {
