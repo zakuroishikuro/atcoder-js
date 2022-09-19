@@ -1,4 +1,4 @@
-const DELAY_MS = 10_000;
+const DELAY_MS = 3_000;
 
 const https = require('https');
 const { JSDOM } = require('jsdom');

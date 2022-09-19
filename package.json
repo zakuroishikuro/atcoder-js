@@ -4,7 +4,7 @@
     "jsdom": "19.0.0"
   },
   "scripts": {
-    "new": "node _src/new.mjs",
+    "new": "node _src/new.js",
     "test": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
     "test:src": "jest --watch --testMatch '<rootDir>/_src/**/*.test.[jt]s?(x)'"
   }
