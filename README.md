@@ -26,8 +26,8 @@ javascript:(async()=>{const url=location.href;const subject=document.title;const
 `pnpm serve` したあとブラウザで[問題のページ](https://atcoder.jp/contests/practice/tasks/practice_1)を開きブックマークレットを押すだけ
 JavaScriptのテンプレが作成されVSCodeで開く
 
-VSCodeでターミナルを追加して`pnpm test`するとproblemsフォルダで変更があったファイルがテストされる ([jest --watch](https://jestjs.io/ja/docs/cli#:~:text=name%2Dof%2Dspec-,%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%3A,-jest%20%2D%2Dwatch%20%23%20%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88))
-
+`pnpm test`するとproblemsフォルダで変更があったファイルがテストされる ([jest --watch](https://jestjs.io/ja/docs/cli#:~:text=name%2Dof%2Dspec-,%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%3A,-jest%20%2D%2Dwatch%20%23%20%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88))
+(Ctrl+zだとVSCodeが自動で開かないので、VSCodeでターミナル追加起動するといいかも？)
 
 # Node.js のバージョンについて
 
