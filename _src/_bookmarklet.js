@@ -21,7 +21,7 @@ javascript: (async () => {
         contestId,
         problemId,
       }),
-    });
+    }).catch(() => alert(`「pnpm serve」してないかも？`));
   } else {
     alert('AtCoderの問題ページで使ってね');
   }
