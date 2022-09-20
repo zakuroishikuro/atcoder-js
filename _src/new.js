@@ -1,9 +1,10 @@
-const DELAY_MS = 3_000;
-
 const https = require('https');
 const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios').default;
+
+const DELAY_MS = 10_000;
 
 const problemsUrl = (arg = '') => {
   const urlMatch = arg.match(/https:\/\/atcoder.jp\/contests\/([^/]+)/);
@@ -11,30 +12,17 @@ const problemsUrl = (arg = '') => {
   return `https://atcoder.jp/contests/${name}/tasks`;
 };
 
-const fetch = (url = '') => {
-  return new Promise((resolve, reject) => {
-    https.get(url, res => {
-      console.log(`  - fetching... ${url}`);
-      const code = res.statusCode;
-      if (code !== 200) reject(`status code: ${code}, url: ${url}`);
-
-      res.setEncoding('utf8');
-      let rawData = '';
-      res.on('data', chunk => (rawData += chunk));
-      res.on('end', () => resolve(rawData));
-    });
-  });
-};
-
 const fetchProblemUrls = async (url = '') => {
-  const html = await fetch(url);
-  const { document } = new JSDOM(html).window;
+  console.log(`  - fetching: ${url}`);
+  const res = await axios(url);
+  const { document } = new JSDOM(res.data).window;
   return [...document.querySelectorAll('table tbody td:nth-child(2) a')].map(a => `https://atcoder.jp${a.href}`);
 };
 
 const fetchProblem = async (url = '') => {
-  const html = await fetch(url);
-  const { document } = new JSDOM(html).window;
+  console.log(`  - fetching: ${url}`);
+  const res = await axios(url);
+  const { document } = new JSDOM(res.data).window;
   const subject = document.title;
   const id = url.match(/[^/]+$/)[0];
   const contest = url.match(/contests\/([^/]+)/)[1];
@@ -71,7 +59,7 @@ const loadTemplate = problem => {
   return template;
 };
 
-module.exports = { URL, problemsUrl, fetch, fetchProblem, fetchProblemUrls, loadTemplate };
+module.exports = { URL, problemsUrl, fetchProblem, fetchProblemUrls, loadTemplate };
 
 if (require.main == module) {
   (async () => {

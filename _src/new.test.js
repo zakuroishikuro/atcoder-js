@@ -1,15 +1,10 @@
-const { problemsUrl, fetch, fetchproblem, fetchproblemUrls, loadTemplate } = require('./new.js');
+const { problemsUrl, fetchproblem, fetchproblemUrls, loadTemplate } = require('./new.js');
 
 test('problemsUrl', () => {
   expect(problemsUrl('abc269')).toBe('https://atcoder.jp/contests/abc269/tasks');
   expect(problemsUrl('https://atcoder.jp/contests/abc269')).toBe('https://atcoder.jp/contests/abc269/tasks');
   expect(problemsUrl('https://atcoder.jp/contests/abc269/tasks')).toBe('https://atcoder.jp/contests/abc269/tasks');
   expect(problemsUrl('https://atcoder.jp/contests/abc269/tasks/abc269_a')).toBe('https://atcoder.jp/contests/abc269/tasks');
-});
-
-test.skip('fetch', async () => {
-  const data = await fetch('https://www.yahoo.co.jp/');
-  expect(data).toMatch(/yahoo/i);
 });
 
 test.skip('fetchproblem', async () => {
