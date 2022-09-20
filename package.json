@@ -1,12 +1,13 @@
 {
   "dependencies": {
-    "axios": "^0.27.2",
     "jest": "v28.1.3",
-    "jsdom": "19.0.0"
+    "koa": "^2.13.4",
+    "koa-body": "^5.0.0",
+    "terser": "^5.15.0"
   },
   "scripts": {
-    "new": "node _src/new.js",
+    "serve": "node _src/serve.js",
     "test": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
-    "test:src": "jest --watch --testMatch '<rootDir>/_src/**/*.test.[jt]s?(x)'"
+    "build:bookmarklet": "terser _src/_bookmarklet.js -o bookmarklet.js"
   }
 }

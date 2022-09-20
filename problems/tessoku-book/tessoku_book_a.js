@@ -1,6 +1,6 @@
 // subject: A01 - The First Problem
 // url: https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_a
-// date: 2022-09-19T16:51:45.723Z
+// date: 2022-09-20T15:12:57.794Z
 function main(input = '') {
   const [a, b, ...items] = input.split(/\s/).map(Number);
   return 'a';
