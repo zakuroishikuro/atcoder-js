@@ -1,6 +1,6 @@
 // subject: A02 - Linear Search
 // url: https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b
-// date: 2022-09-19T16:51:50.327Z
+// date: 2022-09-20T15:18:51.638Z
 function main(input = '') {
   const [a, b, ...items] = input.split(/\s/).map(Number);
   return 'a';
