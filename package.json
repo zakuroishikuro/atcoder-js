@@ -1,4 +1,7 @@
 {
+  "name": "atcoderlet",
+  "license": "MIT",
+  "version": "0.1.0",
   "dependencies": {
     "jest": "v28.1.3",
     "koa": "^2.13.4",
