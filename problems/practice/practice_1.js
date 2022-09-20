@@ -2,8 +2,8 @@
 // url: https://atcoder.jp/contests/practice/tasks/practice_1
 // date: 2022-09-20T15:11:34.952Z
 function main(input = '') {
-  const [a, b, ...items] = input.split(/\s/).map(Number);
-  return 'a';
+  const [a, b, c, s] = input.split(/\s/);
+  return `${+a + +b + +c} ${s}`;
 }
 
 if (require.main === module) {
