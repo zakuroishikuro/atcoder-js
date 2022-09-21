@@ -31,7 +31,7 @@ const createTemplate = problem => {
   fs.mkdirSync(dirPath, { recursive: true });
 
   // ファイルを作成
-  const filePath = path.join(dirPath, `${problemId}_${timestamp}.js`);
+  const filePath = path.join(dirPath, `${problemId}.js`);
   const template = prepareTemplate(problem);
   fs.writeFileSync(filePath, template);
 
