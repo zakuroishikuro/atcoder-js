@@ -16,6 +16,8 @@ app.use(async ctx => {
     const file = createTemplate(problemData);
 
     console.log(`  * [${problemData.contestId}] ${problemData.subject}`);
+
+    // VSCode開く (変なの渡されたらやべーけどまぁ変な文字列は置換してるし・・・)
     exec(`code ${file}`);
   }
 
