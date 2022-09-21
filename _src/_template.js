@@ -2,8 +2,8 @@
 // url: /*url*/
 // timestamp: /*timestamp*/
 function main(input = '') {
-  const [x, y, ...nums] = input.split(/\s/).map(Number);
-  return x;
+  const [a, b] = input.split(/\s/);
+  return a;
 }
 
 if (require.main === module) {
