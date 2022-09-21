@@ -1,4 +1,4 @@
-// /*timestamp*/ /*url*/
+// /*url*/ [/*timestamp*/]
 function main(input = '') {
   const [a, b, c] = input.split(/\s/).map(Number);
   return a;
