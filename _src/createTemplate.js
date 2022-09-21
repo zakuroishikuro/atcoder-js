@@ -32,8 +32,10 @@ const createTemplate = problem => {
 
   // ファイルを作成
   const filePath = path.join(dirPath, `${problemId}.js`);
-  const template = prepareTemplate(problem);
-  fs.writeFileSync(filePath, template);
+  if (!fs.existsSync(filePath)) {
+    const template = prepareTemplate(problem);
+    fs.writeFileSync(filePath, template);
+  }
 
   return filePath;
 };
