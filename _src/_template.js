@@ -2,7 +2,7 @@
 // url: /*url*/
 // timestamp: /*timestamp*/
 function main(input = '') {
-  const [a, b] = input.split(/\s/);
+  const [a, b] = input.split(/\s/).map(Number);
   return a;
 }
 
