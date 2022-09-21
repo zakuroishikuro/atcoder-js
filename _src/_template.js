@@ -13,6 +13,8 @@ if (require.main === module) {
   [
     /*examples*/
   ].forEach(([input, output], i) => {
-    expect(main(input).toString()).toBe(output);
+    test(`example ${i}`, () => {
+      expect(main(input).toString()).toBe(output);
+    });
   });
 }
