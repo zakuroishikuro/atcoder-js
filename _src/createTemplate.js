@@ -8,18 +8,18 @@ const prepareTemplate = problem => {
   return Object.entries(problem).reduce((t, [k, v]) => {
     if (typeof v == 'object') {
       // オブジェクトは整形し、外側のカッコを取る
-      v = JSON.stringify(v, null, '  ').slice(2, -2).trim();
+      v = JSON.stringify(v, null, '  ').slice(2, -2).replace(/^  /gm, '');
 
       // インデントがあればインデント
       const [indent] = TEMPLATE.match(new RegExp(`( +)(?=/\\*${k}\\*/)`)) || [];
-      if (indent) v = v.replace(/^/gm, indent);
+      if (indent) v = v.replace(/^/gm, indent).trim();
     }
     // 置換
     return t.replace(`/*${k}*/`, v);
   }, TEMPLATE);
 };
 
-const createTemplate = async problem => {
+const createTemplate = problem => {
   // サニタイズ
   let { contestId, problemId, timestamp } = problem;
   contestId = contestId.replace(/[^-\w]/g, '');

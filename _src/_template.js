@@ -11,7 +11,7 @@ if (require.main === module) {
   console.log(main(input));
 } else {
   [
-  /*examples*/
+    /*examples*/
   ].forEach(([input, output], i) => {
     test(`example ${i}`, () => {
       expect(main(input)).toBe(output);
