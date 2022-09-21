@@ -12,9 +12,10 @@ if (require.main === module) {
 } else {
   [
     /*examples*/
-  ].forEach(([input, output], i) => {
+  ].forEach(([example, expected], i) => {
     test(`example ${i}`, () => {
-      expect(main(input)).toBe(output);
+      const actual = main(example).toString();
+      expect(actual).toBe(expected);
     });
   });
 }
