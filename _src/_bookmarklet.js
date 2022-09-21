@@ -1,4 +1,6 @@
 javascript: (async () => {
+  const PORT = 37564;
+
   const url = location.href;
   const subject = document.title;
 
@@ -11,7 +13,7 @@ javascript: (async () => {
       examples.at(-1).push(p.textContent.trim());
     });
 
-    await fetch('http://localhost:37564/', {
+    await fetch(`http://localhost:${PORT}`, {
       method: 'POST',
       mode: 'no-cors',
       body: JSON.stringify({
