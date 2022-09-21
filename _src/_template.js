@@ -1,16 +1,17 @@
 // subject: /*subject*/
 // url: /*url*/
-// date: /*datetime*/
+// timestamp: /*timestamp*/
 function main(input = '') {
-  const [a, b, ...items] = input.split(/\s/).map(Number);
-  return 'a';
+  const [x, y, ...nums] = input.split(/\s/).map(Number);
+  return x;
 }
 
 if (require.main === module) {
-  console.log(main(require('fs').readFileSync(0, 'utf8')));
+  const input = require('fs').readFileSync(0, 'utf8').trim();
+  console.log(main(input));
 } else {
   [
-    /*examples*/
+  /*examples*/
   ].forEach(([input, output], i) => {
     test(`example ${i}`, () => {
       expect(main(input)).toBe(output);
