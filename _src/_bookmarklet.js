@@ -1,28 +1,26 @@
 javascript: (async () => {
   const PORT = 37564;
 
-  const url = location.href;
-  const subject = document.title;
-
-  const m = /https:\/\/atcoder.jp\/contests\/([-\w]+)\/tasks\/([-\w]+)/.exec(url);
+  const m = /https:\/\/atcoder.jp\/contests\/([-\w]+)\/tasks\/([-\w]+)/.exec(location.href);
   if (m) {
-    const [contestId, problemId] = m.slice(1);
     const examples = [];
-    document.querySelectorAll('.lang-ja [id^=pre-sample]').forEach((p, i) => {
-      if (i % 2 == 0) examples.push([]);
-      examples.at(-1).push(p.textContent.trim());
+    document.querySelectorAll('.lang-ja [id^=pre-sample]').forEach((e, i) => {
+      (examples[(i / 2) | 0] ??= []).push(e.textContent.trim());
     });
+
+    const problem = {
+      url: m[0],
+      contestId: m[1],
+      problemId: m[2],
+      subject: document.title,
+      examples,
+      timestamp: new Date().toISOString(),
+    };
 
     await fetch(`http://localhost:${PORT}`, {
       method: 'POST',
       mode: 'no-cors',
-      body: JSON.stringify({
-        url,
-        subject,
-        examples,
-        contestId,
-        problemId,
-      }),
+      body: JSON.stringify(problem),
     }).catch(() => alert(`「pnpm serve」してないかも？`));
   } else {
     alert('AtCoderの問題ページで使ってね');
