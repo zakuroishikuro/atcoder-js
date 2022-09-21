@@ -2,7 +2,7 @@
 // url: /*url*/
 // timestamp: /*timestamp*/
 function main(input = '') {
-  const [a, b] = input.split(/\s/).map(Number);
+  let [a, b, c, d] = input.split(/\s/).map(Number);
   return a;
 }
 
@@ -12,10 +12,9 @@ if (require.main === module) {
 } else {
   [
     /*examples*/
-  ].forEach(([example, expected], i) => {
+  ].forEach(([input, output], i) => {
     test(`example ${i}`, () => {
-      const actual = main(example).toString();
-      expect(actual).toBe(expected);
+      expect(main(input).toString()).toBe(output);
     });
   });
 }
