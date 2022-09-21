@@ -2,21 +2,21 @@ const fs = require('fs');
 const path = require('path');
 
 const TEMPLATE_PATH = path.join(__dirname, '/_template.js');
-const TEMPLATE = fs.readFileSync(TEMPLATE_PATH, 'utf8');
 
 const prepareTemplate = problem => {
+  let template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
   return Object.entries(problem).reduce((t, [k, v]) => {
     if (typeof v == 'object') {
       // オブジェクトは整形し、外側のカッコを取る
       v = JSON.stringify(v, null, '  ').slice(2, -2).replace(/^  /gm, '');
 
-      // インデントがあればインデント
-      const [indent] = TEMPLATE.match(new RegExp(`( +)(?=/\\*${k}\\*/)`)) || [];
+      // インデントがあればインデント (置換前のテンプレ使用)
+      const [indent] = template.match(new RegExp(`( +)(?=/\\*${k}\\*/)`)) || [];
       if (indent) v = v.replace(/^/gm, indent).trim();
     }
     // 置換
     return t.replace(`/*${k}*/`, v);
-  }, TEMPLATE);
+  }, template);
 };
 
 const createTemplate = problem => {
