@@ -6,9 +6,8 @@ function main(input = '') {
   return a;
 }
 
-if (require.main === module) {
-  const input = require('fs').readFileSync(0, 'utf8').trim();
-  console.log(main(input));
+if (process.env.NODE_ENV === 'test') {
+  console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 } else {
   [
     /*examples*/
