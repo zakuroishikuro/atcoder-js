@@ -12,8 +12,8 @@ if (process.env.NODE_ENV != 'test') {
   [
     /*examples*/
   ].forEach(([input, output], i) => {
-    test(`example ${i + 1}`, () => {
-      expect(main(input).toString()).toBe(output);
+    test(`example #${i + 1}:\n-----\n${input}\n-----`, () => {
+      expect(`${main(input)}`).toBe(output);
     });
   });
 }
