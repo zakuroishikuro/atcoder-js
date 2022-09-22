@@ -13,7 +13,7 @@ if (require.main === module) {
   [
     /*examples*/
   ].forEach(([input, output], i) => {
-    test(`example ${i}`, () => {
+    test(`example ${i + 1}`, () => {
       expect(main(input).toString()).toBe(output);
     });
   });
