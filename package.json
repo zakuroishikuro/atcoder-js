@@ -11,6 +11,7 @@
   "scripts": {
     "serve": "node _src/serve.js",
     "test": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
+    "min": "esbuild `find problems -type f -exec stat -c '%X%n' {} \\; | sort | tail -1 | cut -c 11-` --minify-syntax",
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js"
   }
 }

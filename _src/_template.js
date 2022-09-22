@@ -6,7 +6,7 @@ function main(input = '') {
   return a;
 }
 
-if (process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV != 'test') {
   console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 } else {
   [
