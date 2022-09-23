@@ -1,22 +1,21 @@
 // /*subject*/
 // /*url*/
 // /*timestamp*/
-const using = (o, t) => Object.getOwnPropertyNames(o).forEach(n => (t[n] = o[n]));
-using(Math);
+Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
 
 function main(input = '') {
-  const [a, b, c] = input.split(/\s/).map(Number);
-  return a;
+	const [a, b, c] = input.split(/\s/).map(Number);
+	return a;
 }
 
 if (process.env.NODE_ENV != 'test') {
-  console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
+	console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 } else {
-  [
-    /*examples*/
-  ].forEach(([input, output], i) => {
-    test(`example #${i + 1}`, () => {
-      expect(`${main(input)}`).toBe(output);
-    });
-  });
+	[
+		/*examples*/
+	].forEach(([input, output], i) => {
+		test(`example #${i + 1}`, () => {
+			expect(`${main(input)}`).toBe(output);
+		});
+	});
 }
