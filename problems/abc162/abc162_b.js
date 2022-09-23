@@ -10,23 +10,23 @@ const sum = (last, diff = 1, first = diff) => {
 //const sumOfArithmeticProgressions = (first=1, terms, diff = 1) => (2 * first + (terms - 1) * diff) * (terms / 2);
 //const sumOfArithmeticProgressions2 = (first=1, terms, last) => terms * (first + last) / 2;
 
-function main(input = '') {
+function main(input = "") {
   const n = +input;
   return sum(n) - sum(n, 3) - sum(n, 5) + sum(n, 15);
 }
 
 if (require.main === module) {
-  const input = require('fs').readFileSync(0, 'utf8').trim();
+  const input = require("fs").readFileSync(0, "utf8").trim();
   console.log(main(input));
 } else {
-  test('sum', () => {
+  test("sum", () => {
     expect(sum(10)).toBe(55);
     expect(sum(10, 3)).toBe(18);
   });
 
   [
-    ['15', '60'],
-    ['1000000', '266666333332'],
+    ["15", "60"],
+    ["1000000", "266666333332"],
   ].forEach(([input, output], i) => {
     test(`example ${i}`, () => {
       expect(main(input).toString()).toBe(output);
