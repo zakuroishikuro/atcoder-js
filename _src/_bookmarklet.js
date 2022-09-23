@@ -1,5 +1,5 @@
-javascript:
-(async () => {
+// deno-lint-ignore-file
+javascript:(async () => {
   const PORT = 37564;
 
   const m = /https:\/\/atcoder.jp\/contests\/([-\w]+)\/tasks\/([-\w]+)/.exec(
@@ -7,7 +7,8 @@ javascript:
   );
   if (m) {
     const examples = [];
-    document.querySelectorAll(".lang-ja [id^=pre-sample]").forEach((e, i) => {
+    const parent = document.querySelector(".lang-ja") || document;
+    parent.querySelectorAll("[id^=pre-sample]").forEach((e, i) => {
       (examples[(i / 2) | 0] ??= []).push(e.textContent.trim());
     });
 
