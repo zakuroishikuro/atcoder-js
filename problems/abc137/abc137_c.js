@@ -4,7 +4,7 @@
 //Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
 
 const main = (input = "") => {
-  let words = input.split(/\s/).slice(1).map((w) => [...w].sort().join(""));
+  const words = input.split(/\s/).slice(1).map((w) => [...w].sort().join(""));
 
   const cnt = {};
   for (const word of words) {
