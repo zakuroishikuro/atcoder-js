@@ -3,10 +3,10 @@
 // /*timestamp*/
 //Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
 
-function main(input = "") {
+const main = (input = "") => {
   const [a, b, c] = input.split(/\s/).map(Number);
   return a;
-}
+};
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
