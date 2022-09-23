@@ -12,7 +12,7 @@ if (process.env.NODE_ENV != 'test') {
   [
     /*examples*/
   ].forEach(([input, output], i) => {
-    test(`example #${i + 1}:\n-----\n${input}\n-----`, () => {
+    test(`example #${i + 1}`, () => {
       expect(`${main(input)}`).toBe(output);
     });
   });
