@@ -18,7 +18,7 @@ if (process.env.NODE_ENV != "test") {
   [
     /*examples*/
   ].forEach(([input, output], i) => {
-    test(`example #${i + 1}`, () => {
+    test.skip(`example #${i + 1}`, () => {
       expect(`${main(input)}`).toBe(output);
     });
   });
