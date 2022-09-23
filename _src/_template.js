@@ -1,7 +1,7 @@
 // /*subject*/
 // /*url*/
 // /*timestamp*/
-Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
+//Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
 
 function main(input = "") {
   const [a, b, c] = input.split(/\s/).map(Number);
