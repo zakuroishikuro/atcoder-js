@@ -1,6 +1,6 @@
-const posCalc = (width) => (x, y) => x % width + y * width;
+const posCalc = (w) => (x, y) => x < 0 || y < 0 || x >= w ? -1 : x + y * w;
 
-test("stub", () => {
+test("posCalc", () => {
   var $ = posCalc(2);
   var matrix = [0, 1, 2, 3];
   expect(matrix[$(0, 0)]).toBe(0);
@@ -22,5 +22,7 @@ test("stub", () => {
 
   // 範囲外
   expect(matrix[$(0, 3)]).toBe(undefined);
-  expect(matrix[$(3, 1)]).toBe(3);
+  expect(matrix[$(3, 9)]).toBe(undefined);
+  expect(matrix[$(-1, 0)]).toBe(undefined);
+  expect(matrix[$(0, -1)]).toBe(undefined);
 });
