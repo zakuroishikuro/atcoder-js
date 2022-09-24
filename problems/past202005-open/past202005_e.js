@@ -3,6 +3,11 @@
 // 2022-09-23T14:29:39.403Z
 //Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
 
+// かなり時間かかった。
+// 入力のパースで添え字が前後してたのと
+// 処理後の色の配列を出力してた
+// 処理ごとに、処理前にその位置の色を出力しなきゃいけなかった
+
 function parseGraph(edges, vertexCount) {
   const graph = [...Array(vertexCount)].map(() => []);
   for (const [a, b] of edges) {
