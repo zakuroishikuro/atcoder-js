@@ -1,5 +1,5 @@
-// deno-lint-ignore-file
-javascript:(async () => {
+javascript:
+(async () => {
   const PORT = 37564;
 
   const m = /https:\/\/atcoder.jp\/contests\/([-\w]+)\/tasks\/([-\w]+)/.exec(
