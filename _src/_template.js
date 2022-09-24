@@ -3,6 +3,7 @@
 // /*timestamp*/
 //Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
 
+// deno-lint-ignore-file
 function main(input = "") {
   const [a, b, c] = input.split(/\s/).map(Number);
   return a;

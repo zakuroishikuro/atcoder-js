@@ -1,4 +1,10 @@
 {
+  "lint": {
+    "files": {
+      "include": ["problems/", "_src/"],
+      "exclude": ["node_modules/"]
+    }
+  },
   "fmt": {
     "files": {
       "include": ["problems/", "_src/"],
