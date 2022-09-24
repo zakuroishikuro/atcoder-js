@@ -2,7 +2,7 @@
   "lint": {
     "files": {
       "include": ["problems/", "_src/"],
-      "exclude": ["node_modules/", "*.md"]
+      "exclude": ["node_modules/", "*.md", "_src/_template.js", "bookmarklet.js"]
     },
     "rules": {
       "include": [],
