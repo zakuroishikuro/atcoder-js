@@ -2,8 +2,12 @@
 // /*url*/
 // /*timestamp*/
 
+const { floor, ceil, abs, sign, sqrt, log, log2, log10 } = Math;
+const _vector = (s, fn = (v) => v) => s.split(/\s/).map(fn);
+const _matrix = (s, fn) => s.split(/\n/).map((r) => _vector(r, fn));
+
 function main(input = "") {
-  const [[a, b, c], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
+  const [a, b, ...data] = _vector(input, Number);
   return a;
 }
 
