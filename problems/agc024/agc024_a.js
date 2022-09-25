@@ -21,8 +21,8 @@ function main(input = "") {
 
 // ATCODER入門 P.210参考
 function main(input = "") {
-  const [a, b, _, k] = input.split(/\s/);
-  return BigInt(k) & 1n ? b - a : a - b;
+  const [a, b] = input.split(/\s/);
+  return input.slice(-1) % 2 == 0 ? a - b : b - a;
 }
 
 if (process.env.NODE_ENV != "test") {
