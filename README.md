@@ -33,6 +33,8 @@ JavaScriptのテンプレが作成されVSCodeで開く
 
 `pnpm min`: problems内の最後に保存したファイルをminifyして表示
 
+`pnpm debug 1`: 最終更新ファイルで例題1を実行する。JavaScript Debug Terminalで実行すること
+
 # Node.js のバージョンについて
 
 ```

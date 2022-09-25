@@ -15,6 +15,7 @@
     "win": "esbuild `find problems -type f -printf '%T@ %p\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=node12 | clip.exe",
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js",
     "test:note": "jest --roots note --watch",
-    "fmt": "deno fmt"
+    "fmt": "deno fmt",
+    "debug": "NODE_ENV=test NEKO=cat node `find problems -type f -printf '%T@ %p\n' | sort -nr | cut -d ' ' -f 2 | head -1`"
   }
 }

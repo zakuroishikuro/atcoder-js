@@ -10,15 +10,23 @@ function main(input = "") {
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
-  test("stub", () => {
-    expect().toBe();
-  });
-
-  [
+  const examples = [
     /*examples*/
-  ].forEach(([input, output], i) => {
-    test(`example #${i + 1}`, () => {
-      expect(`${main(input)}`).toBe(output);
+  ];
+
+  if (process.env.NEKO == "cat") {
+    const idx = process.argv[2] || 1;
+    const input = examples[idx - 1][0];
+    console.log(`----- 🐈 example #${idx}:\n${input}\n----- output:\n${main(input)}\n-----\n`);
+  } else {
+    examples.forEach(([input, output], i) => {
+      test(`example #${i + 1}`, () => {
+        expect(`${main(input)}`).toBe(output);
+      });
     });
-  });
+
+    test("stub", () => {
+      expect().toBe();
+    });
+  }
 }
