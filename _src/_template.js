@@ -1,11 +1,12 @@
 // /*subject*/
 // /*url*/
 // /*timestamp*/
-[Object, Number, Math].forEach((o) => Reflect.ownKeys(o).forEach((n) => globalThis[n] = o[n]));
-const _vector = (s = "") => s.split(/\s/).map(Number);
-const _matrix = (s = "") => s.split(/\n/).map(_vector);
 
 function main(input = "") {
+  const { floor, ceil, min, max, abs, sign, hypot } = Math;
+  const _vector = (s = "") => s.split(/\s/).map(Number);
+  const _matrix = (s = "") => s.split(/\n/).map(_vector);
+
   const [a, b, c] = _vector(input);
   return a;
 }
