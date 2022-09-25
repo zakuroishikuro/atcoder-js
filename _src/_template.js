@@ -3,11 +3,7 @@
 // /*timestamp*/
 
 function main(input = "") {
-  const { floor, ceil, min, max, abs, sign, hypot } = Math;
-  const _vector = (s = "") => s.split(/\s/).map(Number);
-  const _matrix = (s = "") => s.split(/\n/).map(_vector);
-
-  const [a, b, c] = _vector(input);
+  const [[a, b, c], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
   return a;
 }
 
