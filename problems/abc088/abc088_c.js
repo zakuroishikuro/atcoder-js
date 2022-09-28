@@ -27,8 +27,8 @@ function main(input = "") {
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       const value = cells[i][j];
-      const [rowMin, rowMax] = rowBounds[i];
-      const [colMin, colMax] = colBounds[j];
+      const [rowMin, _rowMax] = rowBounds[i];
+      const [colMin, _colMax] = colBounds[j];
       if (value > rowMin + colMin) return "No";
     }
   }
