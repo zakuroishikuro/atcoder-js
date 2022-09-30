@@ -2,6 +2,8 @@
 // https://atcoder.jp/contests/abc048/tasks/arc064_a
 // 2022-09-30T14:20:25.540Z
 
+// 貪欲
+
 function main(input = "") {
   const [[_N, x], boxes] = input.split("\n").map((r) => r.split(/\s/).map(Number));
 
