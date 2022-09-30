@@ -10,14 +10,6 @@ function main(input = "") {
     const a = boxes[i - 1] || 0;
     const b = boxes[i];
 
-    /*
-    if (a + b > x) {
-      const ax = x - a;
-      const bx = x - b;
-      const eat = bx <= 0 ? -bx + a : ax;
-      boxes[i] -= eat;
-      eatedCount += eat;
-    }*/
     if (a + b > x) {
       eatedCount += a + b - x;
       boxes[i] = x - a;
