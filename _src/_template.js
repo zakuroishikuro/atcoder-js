@@ -19,7 +19,7 @@ if (require.main == module) {
 //----------------//
 //----- test -----//
 //----------------//
-if (require.main != module) {
+if (process.env.NODE_ENV == "test") {
   const examples = [
     /*examples*/
   ];
