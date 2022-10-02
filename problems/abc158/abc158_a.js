@@ -10,11 +10,6 @@ if (process.env.NODE_ENV != 'test') {
   console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 }
 
-function parse(s = '', f = Number) {
-  const m = f ? (s) => s.split(/\s/).map(f) : (s) => s.split(/\s/);
-  return /\n.+\n/s.test(s) ? s.split(/\n/).map(m) : m(s);
-}
-
 if (process.env.NODE_ENV == 'test') {
   const examples = [
     ['ABA', 'Yes'],
