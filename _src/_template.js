@@ -12,6 +12,11 @@ function parse(s = '', f = Number) {
   return /\n.+\n/s.test(s) ? s.split(/\n/).map(m) : m(s);
 }
 
+// prettier-ignore
+Object.defineProperties(Object.prototype,{
+  log:{get:require.main==module?function(){return this}:function(){console.log(this);return this}}
+});
+
 if (require.main == module) {
   console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 }
