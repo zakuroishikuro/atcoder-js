@@ -29,7 +29,8 @@ function includes(n, a = []) {
   return includes(n, sub);
 }
 
-function search(target, list = [], _first = 0, _last = list.length - 1) {
+// たぶんいつか必要になるから頑張った
+function _search(target, list = [], _first = 0, _last = list.length - 1) {
   const size = _last - _first + 1;
   if (size < 1) return -1;
 
@@ -37,6 +38,22 @@ function search(target, list = [], _first = 0, _last = list.length - 1) {
   if (list[middle] == target) return middle;
 
   return list[middle] > target ? search(target, list, _first, middle - 1) : search(target, list, middle + 1, _last);
+}
+
+// 再帰じゃない版。ソートはこっちのがキレイだし早いかも
+function search(target, list = []) {
+  let first = 0;
+  let last = list.length - 1;
+  while (first <= last) {
+    const middle = first + Math.floor((last - first) / 2);
+    if (list[middle] == target) return middle;
+    if (list[middle] < target) {
+      first = middle + 1;
+    } else {
+      last = middle - 1;
+    }
+  }
+  return -1;
 }
 
 test('div', () => {
