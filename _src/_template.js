@@ -13,18 +13,13 @@ function parse(s = '', f = Number) {
 }
 
 // prettier-ignore
-Object.defineProperties(Object.prototype,{
-  log:{get:require.main==module?function(){return this}:function(){console.log(this);return this}}
-});
-
-if (require.main == module) {
-  console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
-}
+Object.defineProperties(Object.prototype,{log:{get:require.main==module?function(){return this}:function(){console.log(this);return this}}});
+if (require.main == module) console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 
 //----------------//
 //----- test -----//
 //----------------//
-if (process.env.NODE_ENV == "test") {
+if (process.env.NODE_ENV == 'test') {
   const examples = [
     /*examples*/
   ];
