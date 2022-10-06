@@ -11,9 +11,12 @@
   "scripts": {
     "serve": "node _src/serve.js",
     "test": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
-    "min": "esbuild `find problems -type f -printf '%T@ %p\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=es2019",
-    "win": "esbuild `find problems -type f -printf '%T@ %p\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=es2019 | clip.exe",
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js",
-    "fmt": "deno fmt"
+    "test:note": "jest --roots note --watch",
+    "fmt": "deno fmt",
+
+    "min": "esbuild `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=node12",
+    "minc": "esbuild `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=node12 | clip.exe",
+    "debug": "NODE_ENV=test NEKO=cat node `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1`"
   }
 }

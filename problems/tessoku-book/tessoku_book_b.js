@@ -1,17 +1,18 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// A02 - Linear Search
+// https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_b
+// 2022-10-01T09:25:49.172Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  const [[_n, _x], nums] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
+  return nums.includes(_x) ? "Yes" : "No";
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["5 40\n10 20 30 40 50", "Yes"],
+    ["6 28\n30 10 40 10 50 90", "No"],
   ];
 
   if (process.env.NEKO == "cat") {

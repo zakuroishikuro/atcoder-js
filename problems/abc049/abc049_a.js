@@ -1,17 +1,18 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// A - 居合を終え、青い絵を覆う
+// https://atcoder.jp/contests/abc049/tasks/abc049_a
+// 2022-09-30T13:06:08.384Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  return "aiueo".includes(input) ? "vowel" : "consonant";
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["a", "vowel"],
+    ["z", "consonant"],
+    ["s", "consonant"],
   ];
 
   if (process.env.NEKO == "cat") {

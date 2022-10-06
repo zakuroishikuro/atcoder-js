@@ -10,7 +10,7 @@ function main(input = "") {
 }
 
 function main2(input = "") {
-  let [k, a, b] = input.split(/\s/).map(Number);
+  const [k, a, b] = input.split(/\s/).map(Number);
   return ((b / k) | 0) - (((a - 1) / k) | 0) > 0 ? "OK" : "NG";
 }
 
@@ -23,7 +23,7 @@ if (require.main === module) {
     ["4\n5 7", "NG"],
     ["1\n11 11", "OK"],
   ].forEach(([input, output], i) => {
-    test("examples", () => {
+    test(`examples #${i}`, () => {
       expect(main(input).toString()).toBe(output);
       expect(main2(input).toString()).toBe(output);
     });

@@ -1,10 +1,10 @@
 # atcoderlet
 
-AtCoderのテストを簡単にしたかったツール
-ワンタッチで問題のテンプレ作成・Jestでテスト
-(今のところJavaScriptで解く人専用)
+無限にあるAtCoderテスト自動化ツールの車輪の再発名
 
-JavaScriptのテンプレにそのままテスト書いてるけど、直接実行した場合はテストは走らないようになってるのでファイルそのままコピペしちゃって大丈夫
+`pnpm serve`でサーバー立ち上げておいてAtCoderで問題のページ開いてブックマークレット実行するとそのサーバーでpostリクエスト受け取ってVSCodeで問題のテンプレを開く
+
+テンプレにそのままテスト書いてるけど、直接実行した場合はテストは走らないようになってるからファイルそのままコピペしちゃって大丈夫
 
 # インストール
 
@@ -18,7 +18,7 @@ pnpm install
 名前は`[atcoderlet]`など好きに付ける
 
 ```js
-javascript:(async()=>{const PORT=37564;const m=/https:\/\/atcoder.jp\/contests\/([-\w]+)\/tasks\/([-\w]+)/.exec(location.href);if(m){const examples=[];const parent=document.querySelector(".lang-ja")||document;parent.querySelectorAll("[id^=pre-sample]").forEach((e,i)=>{(examples[i/2|0]??=[]).push(e.textContent.trim())});const problem={url:m[0],contestId:m[1],problemId:m[2],subject:document.title,examples,timestamp:new Date().toISOString()};await fetch(`http://localhost:${PORT}`,{method:"POST",mode:"no-cors",body:JSON.stringify(problem)}).catch(()=>alert(`\u300Cpnpm serve\u300D\u3057\u3066\u306A\u3044\u304B\u3082\uFF1F`))}else{alert("AtCoder\u306E\u554F\u984C\u30DA\u30FC\u30B8\u3067\u4F7F\u3063\u3066\u306D")}})();
+javascript:(async()=>{const PORT=37564;const m=/https:\/\/atcoder.jp\/contests\/([-\w]+)\/tasks\/([-\w]+)/.exec(location.href);if(m){const examples=[];const parent=document.querySelector(".lang-ja")||document;parent.querySelectorAll("[id^=pre-sample], ol.linenums").forEach((e,i)=>{let text;if(e.children.length>0){text=[...e.children].map(c=>c.textContent).join("\n")}else{text=e.textContent}(examples[i/2|0]??=[]).push(text.trim())});const problem={url:m[0],contestId:m[1],problemId:m[2],subject:document.title,examples,timestamp:new Date().toISOString()};await fetch(`http://localhost:${PORT}`,{method:"POST",mode:"no-cors",body:JSON.stringify(problem)}).catch(()=>alert(`\u300Cpnpm serve\u300D\u3057\u3066\u306A\u3044\u304B\u3082\uFF1F`))}else{alert("AtCoder\u306E\u554F\u984C\u30DA\u30FC\u30B8\u3067\u4F7F\u3063\u3066\u306D")}})();
 ```
 
 あとVSCodeもインストールしておく
@@ -32,6 +32,8 @@ JavaScriptのテンプレが作成されVSCodeで開く
 (Ctrl+zだとVSCodeが自動で開かないので、VSCodeでターミナル追加起動するといいかも？)
 
 `pnpm min`: problems内の最後に保存したファイルをminifyして表示
+
+`pnpm debug 1`: 最終更新ファイルで例題1を実行する。JavaScript Debug Terminalで実行すること
 
 # Node.js のバージョンについて
 

@@ -1,10 +1,10 @@
-// /*subject*/
-// /*url*/
-// /*timestamp*/
+// A - You should output ARC, though this is ABC.
+// https://atcoder.jp/contests/abc255/tasks/abc255_a
+// 2022-10-06T13:02:47.569Z
 
 function main(input = '') {
-  const [a, b, c] = parse(input);
-  return a;
+  const [[r, c], ...a] = parse(input);
+  return a[r - 1][c - 1];
 }
 
 function parse(s = '', f = Number) {
@@ -21,7 +21,9 @@ if (process.env.NODE_ENV != 'test') console.log(main(require('fs').readFileSync(
 //----------------//
 if (process.env.NODE_ENV == 'test') {
   const examples = [
-    /*examples*/
+    ['1 2\n1 0\n0 1', '0'],
+    ['2 2\n1 2\n3 4', '4'],
+    ['2 1\n90 80\n70 60', '70']
   ];
 
   if (process.env.NEKO == 'cat') {

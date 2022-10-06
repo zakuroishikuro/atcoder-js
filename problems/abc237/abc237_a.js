@@ -1,10 +1,11 @@
-// /*subject*/
-// /*url*/
-// /*timestamp*/
+// A - Not Overflow
+// https://atcoder.jp/contests/abc237/tasks/abc237_a
+// 2022-10-05T15:27:08.167Z
 
 function main(input = '') {
-  const [a, b, c] = parse(input);
-  return a;
+  const n = +input;
+  const max = 2 ** 31;
+  return -max <= n && n < max ? "Yes" : "No";
 }
 
 function parse(s = '', f = Number) {
@@ -21,7 +22,7 @@ if (process.env.NODE_ENV != 'test') console.log(main(require('fs').readFileSync(
 //----------------//
 if (process.env.NODE_ENV == 'test') {
   const examples = [
-    /*examples*/
+    ["10","Yes"],["-9876543210","No"],["483597848400000","No"]
   ];
 
   if (process.env.NEKO == 'cat') {

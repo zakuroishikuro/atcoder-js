@@ -1,10 +1,15 @@
-// /*subject*/
-// /*url*/
-// /*timestamp*/
+// A06 - How Many Guests?
+// https://atcoder.jp/contests/tessoku-book/tasks/math_and_algorithm_ai
+// 2022-10-02T11:02:46.532Z
 
 function main(input = '') {
-  const [a, b, c] = parse(input);
-  return a;
+  const [_, cnt, ...queries] = parse(input);
+
+  let s = 0;
+  const sum = [0, ...cnt].map((n) => (s += n));
+
+  const ans = queries.map(([l, r]) => sum[r] - sum[l - 1]);
+  return ans.join('\n');
 }
 
 function parse(s = '', f = Number) {
@@ -12,17 +17,15 @@ function parse(s = '', f = Number) {
   return /\n.+\n/s.test(s) ? s.split(/\n/).map(m) : m(s);
 }
 
-// prettier-ignore
-Object.defineProperties(Object.prototype,{log:{get:require.main==module?function(){return this}:function(){console.log(this);return this}}});
-if (process.env.NODE_ENV != 'test') console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
+if (require.main == module) {
+  console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
+}
 
 //----------------//
 //----- test -----//
 //----------------//
 if (process.env.NODE_ENV == 'test') {
-  const examples = [
-    /*examples*/
-  ];
+  const examples = [['10 5\n8 6 9 1 2 1 10 100 1000 10000\n2 3\n1 4\n3 9\n6 8\n1 10', '15\n24\n1123\n111\n11137']];
 
   if (process.env.NEKO == 'cat') {
     const idx = process.argv[2] || 1;

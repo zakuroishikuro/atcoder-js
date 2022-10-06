@@ -1,17 +1,19 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// 002 - Sum of 3 Integers
+// https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_b
+// 2022-09-25T11:49:17.697Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  const [a, b, c] = input.split(/\s/).map(Number);
+  return a + b + c;
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["10 20 50", "80"],
+    ["1 1 1", "3"],
+    ["100 100 100", "300"],
   ];
 
   if (process.env.NEKO == "cat") {

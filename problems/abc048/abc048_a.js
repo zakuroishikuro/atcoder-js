@@ -1,17 +1,18 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// A - AtCoder *** Contest
+// https://atcoder.jp/contests/abc048/tasks/abc048_a
+// 2022-09-30T13:46:29.674Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  return input.replace(/(?:(\w)\S*\s*)/g, "$1");
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["AtCoder Beginner Contest", "ABC"],
+    ["AtCoder Snuke Contest", "ASC"],
+    ["AtCoder X Contest", "AXC"],
   ];
 
   if (process.env.NEKO == "cat") {

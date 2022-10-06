@@ -1,17 +1,19 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// A - ABC333
+// https://atcoder.jp/contests/abc109/tasks/abc109_a
+// 2022-09-25T02:39:28.802Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  const [a, b] = input.split(/\s/);
+  return a * b & 1 ? "Yes" : "No";
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["3 1", "Yes"],
+    ["1 2", "No"],
+    ["2 2", "No"],
   ];
 
   if (process.env.NEKO == "cat") {

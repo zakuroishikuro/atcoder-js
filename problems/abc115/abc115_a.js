@@ -1,17 +1,17 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// A - Christmas Eve Eve Eve
+// https://atcoder.jp/contests/abc115/tasks/abc115_a
+// 2022-09-25T08:41:07.415Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  return "Christmas" + " Eve".repeat(25 - input);
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["25", "Christmas"],
+    ["22", "Christmas Eve Eve Eve"],
   ];
 
   if (process.env.NEKO == "cat") {

@@ -1,17 +1,19 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// 005 - Modulo 100
+// https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_e
+// 2022-09-25T12:38:12.782Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  const [_n, ...data] = input.split(/\s/).map(Number);
+  return data.reduce((a, b) => a + b) % 100;
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["3\n30 50 70", "50"],
+    ["10\n1 2 3 4 5 6 7 8 9 10", "55"],
+    ["5\n60 60 60 60 60", "0"],
   ];
 
   if (process.env.NEKO == "cat") {

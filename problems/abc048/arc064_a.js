@@ -1,17 +1,34 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// C - Boxes and Candies
+// https://atcoder.jp/contests/abc048/tasks/arc064_a
+// 2022-09-30T14:20:25.540Z
+
+// 貪欲
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  const [[_N, x], boxes] = input.split("\n").map((r) => r.split(/\s/).map(Number));
+
+  let eatedCount = 0;
+  for (let i = 0; i < boxes.length; i++) {
+    const a = boxes[i - 1] || 0;
+    const b = boxes[i];
+
+    if (a + b > x) {
+      eatedCount += a + b - x;
+      boxes[i] = x - a;
+    }
+  }
+
+  return eatedCount;
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["3 3\n2 2 2", "1"],
+    ["6 1\n1 6 1 2 0 4", "11"],
+    ["5 9\n3 1 4 1 5", "0"],
+    ["2 0\n5 5", "10"],
   ];
 
   if (process.env.NEKO == "cat") {

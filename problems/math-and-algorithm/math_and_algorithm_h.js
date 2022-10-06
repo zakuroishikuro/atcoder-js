@@ -1,17 +1,23 @@
-// A - Saturday
-// https://atcoder.jp/contests/abc267/tasks/abc267_a
-// 2022-09-29T14:35:23.112Z
+// 008 - Brute Force 1
+// https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_h
+// 2022-09-26T13:24:07.095Z
 
 function main(input = "") {
-  return 5 - "ouehr".indexOf(input[1]);
+  const [n, s] = input.split(/\s/).map(Number);
+  let cnt = 0;
+  for (let i = 1; i <= n; i++){
+    for (let j = 1; j <= n; j++){
+      if (i + j <= s) cnt++;
+    }
+  }
+  return cnt;
 }
 
 if (process.env.NODE_ENV != "test") {
   console.log(main(require("fs").readFileSync(0, "utf8").trim()));
 } else {
   const examples = [
-    ["Wednesday", "3"],
-    ["Monday", "5"],
+    ["3 4","6"],["869 120","7140"]
   ];
 
   if (process.env.NEKO == "cat") {
