@@ -1,4 +1,4 @@
-const {posCalc} = require("./stub.js");
+const { posCalc } = require("./stub.js");
 
 test("posCalc", () => {
   var $ = posCalc(2);
