@@ -1,0 +1,27 @@
+{
+  "lint": {
+    "files": {
+      "include": ["problems/", "_src/"],
+      "exclude": ["node_modules/", "*.md", "_src/_template.js", "bookmarklet.js"]
+    },
+    "rules": {
+      "include": [],
+      "exclude": [
+        "no-unused-labels"
+      ]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["problems/", "_src/"],
+      "exclude": ["node_modules/"]
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 160,
+      "indentWidth": 2,
+      "singleQuote": false,
+      "proseWrap": "always"
+    }
+  }
+}
