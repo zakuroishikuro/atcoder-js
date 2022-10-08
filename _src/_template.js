@@ -3,20 +3,16 @@
 // /*timestamp*/
 
 // prettier-ignore
-if (process.env.NODE_ENV != 'test') console.log(solve(require('fs').readFileSync(0, 'utf8').trim()).toString());
 Object.defineProperties(Object.prototype, { log: { get: require.main == module ? function () { return this } : function () { console.log(this); return this } } });
-const _vector = (s, f = v => v) => s.split(/\s/).map(f); //一次元配列
-const _matrix = (s, f = v => v) => s.split(/\s/).map(r => _vector(r, f)); //二次元配列
+if (process.env.NODE_ENV != 'test') console.log(solve(require('fs').readFileSync(0, 'utf8').trim()).toString());
 
-//　　　∧＿∧
-//　　　(　･ω･)＝つ≡つ
-//　　　(っ　≡つ＝つ
-//　　　./　　　) ﾊﾞﾊﾞﾊﾞﾊﾞ
-//　　　( /￣∪
+//
+// ＼( 'ω')／ウオオオオアアーーーッッ！！！
+// 
 
 function solve(input = '') {
-  const [A, B, ...data] = _vector(input, Number);
-  //const [[_A, _B], ...data] = _matrix(input, Number); 
+  //const [A, B, ...data] = input.split(/\s/).map(Number);
+  const [[_A, _B], ...data] = input.split(/\n/).map(r => r.split(/\s/).map(Number));
 
   return A;
 }
