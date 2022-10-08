@@ -13,7 +13,6 @@
     "test": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js",
     "test:note": "jest --roots note --watch",
-    "fmt": "deno fmt",
 
     "min": "esbuild `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=node12",
     "minc": "esbuild `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=node12 | clip.exe",
