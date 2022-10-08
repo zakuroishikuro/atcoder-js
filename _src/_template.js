@@ -15,7 +15,6 @@ function main(input = '') {
   return A;
 }
 
-// prettier-ignore
 if (process.env.NODE_ENV != 'test')
   console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 
