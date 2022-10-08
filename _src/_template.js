@@ -11,8 +11,8 @@ if (process.env.NODE_ENV != 'test') console.log(solve(require('fs').readFileSync
 // 
 
 function solve(input = '') {
-  const [N, K] = input.split(/\s+/).map(s => isNaN(s) ? s : +s);
-  //const [[_N, _K], ...data] = input.split(/\n/).map(r => r.split(/\s/).map(s => isNaN(s) ? s : +s));
+  const [N, K] = input.split(/\s+/).map(Number);
+  //const [[_N, _K], ...data] = input.split(/\n/).map(r => r.split(/\s+/).map(Number);
 
   return N;
 }
