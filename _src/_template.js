@@ -2,19 +2,21 @@
 // /*url*/
 // /*timestamp*/
 
-function main(input = '') {
-  const [a, b, c] = parse(input);
-  return a;
-}
+// prettier-ignore
+Object.defineProperties(Object.prototype, { log: { get: require.main == module ? function () { return this } : function () { console.log(this); return this } } });
+const _vector = (s, f = v => v) => s.split(/\s/).map(f); //一次元配列
+const _matrix = (s, f = v => v) => s.split(/\s/).map(r => _vector(r, f)); //二次元配列
 
-function parse(s = '', f = Number) {
-  const m = f ? (s) => s.split(/\s/).map(f) : (s) => s.split(/\s/);
-  return /\n.+\n/s.test(s) ? s.split(/\n/).map(m) : m(s);
+function main(input = '') {
+  const [A, B, ...data] = _vector(input, Number);
+  //const [[_A, _B], ...data] = _matrix(input, Number); 
+
+  return A;
 }
 
 // prettier-ignore
-Object.defineProperties(Object.prototype,{log:{get:require.main==module?function(){return this}:function(){console.log(this);return this}}});
-if (process.env.NODE_ENV != 'test') console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
+if (process.env.NODE_ENV != 'test')
+  console.log(main(require('fs').readFileSync(0, 'utf8').trim()));
 
 //----------------//
 //----- test -----//
