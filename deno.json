@@ -1,7 +1,7 @@
 {
   "lint": {
     "files": {
-      "include": ["problems/", "_src/"],
+      "include": ["problems/", "_src/", "_problems/"],
       "exclude": ["node_modules/", "*.md", "_src/_template.js", "bookmarklet.js"]
     },
     "rules": {
@@ -13,7 +13,7 @@
   },
   "fmt": {
     "files": {
-      "include": ["problems/", "_src/"],
+      "include": ["problems/", "_src/", "_problems/"],
       "exclude": ["node_modules/"]
     },
     "options": {
