@@ -14,7 +14,7 @@ function solve(input = '') {
   const [N, K] = input.split(/\s/).map(Number);
   //const [[_N, _K], ...data] = input.split(/\n/).map(r => r.split(/\s/).map(Number));
 
-  return A;
+  return N;
 }
 
 //----------------//
