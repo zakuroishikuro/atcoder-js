@@ -4,6 +4,7 @@
 
 // prettier-ignore
 Object.defineProperties(Object.prototype, { log: { get: require.main == module ? function () { return this } : function () { console.log(this); return this } } });
+
 const _vector = (s, f = v => v) => s.split(/\s/).map(f); //一次元配列
 const _matrix = (s, f = v => v) => s.split(/\s/).map(r => _vector(r, f)); //二次元配列
 
