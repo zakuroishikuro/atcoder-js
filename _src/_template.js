@@ -11,8 +11,8 @@ if (process.env.NODE_ENV != 'test') console.log(solve(require('fs').readFileSync
 // 
 
 function solve(input = '') {
-  //const [A, B, ...data] = input.split(/\s/).map(Number);
-  const [[_A, _B], ...data] = input.split(/\n/).map(r => r.split(/\s/).map(Number));
+  const [N, K] = input.split(/\s/).map(Number);
+  //const [[_N, _K], ...data] = input.split(/\n/).map(r => r.split(/\s/).map(Number));
 
   return A;
 }
