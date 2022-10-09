@@ -15,7 +15,7 @@ app.use(async (ctx) => {
     const problemData = JSON.parse(req.body);
     const file = createTemplate(problemData);
 
-    console.log(`  * [${problemData.contestId}] ${problemData.subject}`);
+    console.log(`  * [${problemData.contestId}] ${problemData.subject} (${file})`);
 
     // VSCode開く (変なの渡されたらやべーけどまぁ変な文字列は置換してるし・・・)
     exec(`code ${file}`);

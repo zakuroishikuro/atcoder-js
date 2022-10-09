@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const TEMPLATE_PATH = path.join(__dirname, "/_template.js");
+const TEMPLATE_PATH = path.join(__dirname, "/_template.ts");
 
 const prepareTemplate = (problem) => {
   // サーバー再起動せず変更したいので毎回読み込みなおす
@@ -28,7 +28,7 @@ const createTemplate = (problem) => {
   fs.mkdirSync(dirPath, { recursive: true });
 
   // ファイルを作成
-  const filePath = path.join(dirPath, `${problemId}.js`);
+  const filePath = path.join(dirPath, `${problemId}.test.ts`);
   if (!fs.existsSync(filePath)) {
     const template = prepareTemplate(problem);
     fs.writeFileSync(filePath, template);
