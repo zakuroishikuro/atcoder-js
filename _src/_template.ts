@@ -2,30 +2,21 @@
 // /*url*/
 // /*timestamp*/
 
-// prettier-ignore
-Object.defineProperties(Object.prototype, { _: { get: require.main == module ? function () { return this } : function () { console.log(this); return this } } });
-if (!process.env.VITEST) console.log(solve(require('fs').readFileSync(0, 'utf8').trim()).toString());
+if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim().toString()));
 
-//
 // ＼( 'ω')／ウオオオオアアーーーッッ！！！
-// 
-
-function solve(input: string) {
-  const [N, K] = input.split(/\s+/).map(Number);
-  //const [[_N, _K], ...data] = input.split(/\n/).map(r => r.split(/\s+/).map(Number);
-
+export function solve(input: string) {
+  const [A, B] = input.split(/\s/).map(Number);
+  //const [[_N, _K], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
   return N;
 }
 
-//----------------//
-//----- test -----//
-//----------------//
-if (import.meta.vitest) {
-  const { it, expect } = import.meta.vitest;
-
-  [
+// ＼( 'ω')／テストッッ！！！
+if (process.env.VITEST) {
+  const { test, expect } = import.meta.vitest;
+  test.each([
     /*examples*/
-  ].forEach(([input, output], i) => {
-    it(`examples #${i}`, () => expect(solve(input).toString()).toBe(output));
-  })
+  ])("example %#: %j -> %j", (input, expected) => {
+    expect(solve(input).toString()).toBe(expected);
+  });
 }

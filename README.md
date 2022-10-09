@@ -1,5 +1,6 @@
 # atcoderlet
 
+jestとvitestとjavascriptとtypescriptを混在させてカオスになった
 完全自分用
 
 無限にあるAtCoderテスト自動化ツールの車輪の再発名
