@@ -3,17 +3,18 @@
   "license": "MIT",
   "version": "0.1.0",
   "dependencies": {
+    "@types/node": "^18.8.3",
     "esbuild": "^0.15.8",
     "jest": "v28.1.3",
     "koa": "^2.13.4",
-    "koa-body": "^5.0.0"
+    "koa-body": "^5.0.0",
+    "tstl": "^2.5.8"
   },
   "scripts": {
     "serve": "node _src/serve.js",
     "test": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js",
     "test:note": "jest --roots note --watch",
-
     "min": "esbuild `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=node12",
     "minc": "esbuild `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1` --minify-syntax --target=node12 | clip.exe",
     "debug": "NODE_ENV=test NEKO=cat node `find problems -type f -printf '%T@ %p\\n' | sort -nr | cut -d ' ' -f 2 | head -1`"
