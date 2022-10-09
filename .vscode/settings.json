@@ -3,7 +3,7 @@
   "deno.lint": true,
   "deno.config": "./deno.jsonc",
   "[typescript]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.defaultFormatter": "denoland.vscode-deno"
   }
 }

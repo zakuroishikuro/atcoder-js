@@ -4,6 +4,7 @@
       "node",
       "vitest/importMeta"
     ],
-    "module": "ESNext"
+    "module": "ESNext",
+    "target": "ESNext"
   }
 }
