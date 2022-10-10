@@ -1,7 +1,7 @@
 import { test, expect } from "vitest";
 
 const seed = (s = 0xC0FFEE) => (h = 1000, l = 0) => (s ^= s << 13, s ^= s >> 17, s ^= s << 5, l + (Math.abs(s) % (h + 1 - l)));
-const randNums = (len = 10000, h?: number, l?: number, rand = seed()) => [...Array(len)].map(() => rand(h, l));
+const randNums = (len = 10000, h?: number, l?: number, rand = seed()) => () => [...Array(len)].map(() => rand(h, l));
 
 test("rand", () => {
   const LEN = 10;
@@ -35,7 +35,8 @@ test("rand", () => {
 })
 
 test("randNums", () => {
-  const nums = randNums(100, 1000000);
+  const rands = randNums(100, 1000000);
+  const nums = rands(); //シード固定したいのでこうなる
   expect(nums.length).toBe(100);
   expect(nums.length).toBe(new Set(nums).size);
 })
