@@ -9,7 +9,7 @@ export function solve(input: string) {
   const [N, ...D] = input.split(/\s/).map(Number);
 
   D.sort((a, b) => a - b);
-  let mid = Math.floor(D.length / 2);
+  const mid = Math.floor(D.length / 2);
 
   return Math.abs(D[mid - 1] - D[mid]);
 }
