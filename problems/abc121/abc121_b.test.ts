@@ -6,9 +6,18 @@
 // ＼( 'ω')／ウオオオオアアーーーッッ！！！
 //
 export function solve(input: string) {
-  const [A, B] = input.split(/\s/).map(Number);
-  //const [[_N, _K], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
-  return A;
+  const rows = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
+  const [N, M, C] = rows[0];
+  const B = rows[1];
+  const A = rows.slice(2);
+
+  let cnt = 0;
+  for (const a of A) {
+    const sum = a.reduce((sum, n, i) => sum + n * B[i], 0);
+    if (sum + C > 0) cnt++;
+  }
+
+  return cnt;
 }
 
 // deno-fmt-ignore
