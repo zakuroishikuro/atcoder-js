@@ -17,6 +17,8 @@
     "serve": "node _src/serve.js",
     "jest": "jest --watch --testMatch '<rootDir>/problems/**/*.js?(x)'",
     "test": "vitest problems",
+    "test:util": "vitest util",
+
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js",
     "test:note": "jest --roots note --watch"
   }

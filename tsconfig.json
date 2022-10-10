@@ -5,6 +5,8 @@
       "vitest/importMeta"
     ],
     "module": "ESNext",
-    "target": "ESNext"
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "baseUrl": "./"
   }
 }
