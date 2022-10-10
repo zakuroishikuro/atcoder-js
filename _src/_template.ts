@@ -12,7 +12,7 @@ export function solve(input: string) {
 }
 
 // deno-fmt-ignore
-if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim().toString()));
+if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 // ------------------------
 // ＼( 'ω')／テストッッ！！！
