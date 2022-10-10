@@ -19,7 +19,6 @@ if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8")
 // ------------------------
 if (process.env.VITEST) {
   const { test, expect } = import.meta.vitest;
-  
   test.each([
     /*examples*/
   ])("example %#:\n---input---\n%s\n-----------", (input, expected) => {
