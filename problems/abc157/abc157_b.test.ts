@@ -9,6 +9,7 @@ export function solve(input: string) {
   const rows = input.split(/\n/);
   const A = rows.slice(0, 3).map((r) => r.split(/\s/).map(Number));
   const [N, ...B] = rows.slice(3).map(Number);
+  if (N < 3) return "No";
 
   const card = [];
   for (let i = 0; i < 3; i++) {
