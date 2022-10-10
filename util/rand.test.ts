@@ -1,7 +1,13 @@
 import { test, expect } from "vitest";
 
-const seed = (s = 0xC0FFEE) => (h = 1000, l = 0) => (s ^= s << 13, s ^= s >> 17, s ^= s << 5, l + (Math.abs(s) % (h + 1 - l)));
-const randNums = (len = 10000, h?: number, l?: number, rand = seed()) => () => [...Array(len)].map(() => rand(h, l));
+const seed = (s = 0xC0FFEE) => (max = 100, min = 0) => (s ^= s << 13, s ^= s >> 17, s ^= s << 5, min + (Math.abs(s) % (max + 1 - min)));
+const randNums = (max = 100, min = 1, len = 1000, rand = seed()) => () => [...Array(len)].map(() => rand(max, min));
+const uniqNums = (max = 100, min = 1, len = 1000, rand = seed()) => () => {
+  if (max - min < len) throw "デカすぎんだろ・・・";
+  const s = new Set();
+  while (s.size < len) s.add(rand(max, min));
+  return [...s];
+}
 
 test("rand", () => {
   const LEN = 10;
@@ -26,17 +32,27 @@ test("rand", () => {
 
   // 範囲指定
   const min = 10, max = 100;
-  const rand4 = seed
   const nums4 = [...Array(LEN)].map(() => Math.floor(rand(max, min)));
   nums4.forEach(n => {
     expect(n).toBeLessThanOrEqual(max);
     expect(n).toBeGreaterThanOrEqual(min);
   })
+
+  // かぶってない？
+  const nums5 = [...Array(10000)].map(() => Math.floor(rand(10, 1)));
+  expect(new Set(nums5).size).toBe(10);
+
+  // 比率は？
+  let cnt = Array(10).fill(0);
+  nums5.forEach(n => cnt[n - 1]++);
+  cnt = cnt.map(n => n / 100).map(n => n >= 9 && n <= 11);
+  expect(cnt)
 })
 
 test("randNums", () => {
-  const rands = randNums(100, 1000000);
+  const len = 100, min = 0, max = 100000;
+  const rands = randNums(max, min, len);
   const nums = rands(); //シード固定したいのでこうなる
   expect(nums.length).toBe(100);
   expect(nums.length).toBe(new Set(nums).size);
-})
+});
