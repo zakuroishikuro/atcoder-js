@@ -9,7 +9,6 @@ export function solve(input: string) {
   const rows = input.split(/\n/);
   const A = rows.slice(0, 3).map((r) => r.split(/\s/).map(Number));
   const [N, ...B] = rows.slice(3).map(Number);
-  if (N < 3) return "No";
 
   const card = [];
   for (let i = 0; i < 3; i++) {
@@ -27,7 +26,7 @@ export function solve(input: string) {
       if (card[j][i]) h++; // タテ
     }
     if (card[i][i]) r++; //左上から右下
-    if (card[i][3 - i]) l++; //右上から左下
+    if (card[i][2 - i]) l++; //右上から左下
 
     if (v == 3 || h == 3 || r == 3 || l == 3) return "Yes";
   }
