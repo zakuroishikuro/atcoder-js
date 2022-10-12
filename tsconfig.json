@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "types": [
-      "node",
-      "vitest/importMeta",
-      "jest"
-    ],
+    "types": ["node", "vitest/importMeta", "jest"],
     "module": "ESNext",
     "moduleResolution": "Node",
     "target": "ESNext",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "esModuleInterop": true
   }
 }
