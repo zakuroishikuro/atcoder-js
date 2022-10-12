@@ -1,17 +1,16 @@
 // B - Minesweeper
 // https://atcoder.jp/contests/abc075/tasks/abc075_b
 // 2022-09-23T04:33:39.251Z
-//Object.getOwnPropertyNames(Math).forEach((n) => globalThis[n] = Math[n]);
 
 // なんとなくカウンタ1次元のままやろうとして無駄に複雑になった
 
-const posCalc = (w) => (x, y) => x < 0 || y < 0 || x >= w ? -1 : x + y * w;
+const posCalc = (w: number) => (x: number, y: number) => x < 0 || y < 0 || x >= w ? -1 : x + y * w;
 
-const main = (input = "") => {
-  let [height, width, ...field] = input.split(/\s/);
-  height = +height;
-  width = +width;
-  field = field.map((r) => r.split(""));
+export function main(input: string) {
+  const [H, W, ...S] = input.split(/\s/);
+  const height = +H;
+  const width = +W;
+  const field = S.map((r) => r.split(""));
 
   const $ = posCalc(width);
   const cnt = new Uint32Array(width * height);
@@ -38,20 +37,25 @@ const main = (input = "") => {
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       if (field[y][x] != "#") {
-        field[y][x] = cnt[$(x, y)];
+        field[y][x] = cnt[$(x, y)].toString();
       }
     }
   }
 
   return field.map((r) => r.join("")).join("\n");
-};
+}
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  test("stub", () => {
-    expect().toBe();
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+
+if (process.env.NODE_ENV == "test") {
+  test.each([
+    ["3 5\n.....\n.#.#.\n.....", "11211\n1#2#1\n11211"],
+    ["3 5\n#####\n#####\n#####", "#####\n#####\n#####"],
+    ["6 6\n#####.\n#.#.##\n####.#\n.#..#.\n#.##..\n#.#...", "#####3\n#8#7##\n####5#\n4#65#2\n#5##21\n#4#310"],
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
+
   test("posCalc", () => {
     const $ = posCalc(2);
     const matrix = [0, 1, 2, 3];
@@ -77,25 +81,5 @@ if (process.env.NODE_ENV != "test") {
     expect(matrix2[$2(3, 9)]).toBe(undefined);
     expect(matrix2[$2(-1, 0)]).toBe(undefined);
     expect(matrix2[$2(0, -1)]).toBe(undefined);
-  });
-
-  [
-    [
-      "3 5\n.....\n.#.#.\n.....",
-      "11211\n1#2#1\n11211",
-    ],
-    [
-      "3 5\n#####\n#####\n#####",
-      "#####\n#####\n#####",
-    ],
-    [
-      "6 6\n#####.\n#.#.##\n####.#\n.#..#.\n#.##..\n#.#...",
-      "#####3\n#8#7##\n####5#\n4#65#2\n#5##21\n#4#310",
-    ],
-  ].forEach(([input, output], i) => {
-    test(`example #${i + 1}`, () => {
-      const actual = main(input);
-      expect(actual).toBe(output);
-    });
   });
 }
