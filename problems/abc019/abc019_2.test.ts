@@ -1,10 +1,9 @@
-// A - 積雪深差
-// https://atcoder.jp/contests/abc001/tasks/abc001_1
-// 2022-09-28T14:02:53.981Z
+// B - 高橋くんと文字列圧縮
+// https://atcoder.jp/contests/abc019/tasks/abc019_2
+// 2022-09-23T14:15:06.865Z
 
 export function main(input: string) {
-  const [h1, h2] = input.split(/\s/).map(Number);
-  return h1 - h2;
+  return input.replace(/(.)\1*/g, (m, a) => a + m.length);
 }
 
 if (require.main == module)
@@ -12,9 +11,9 @@ if (require.main == module)
 
 if (process.env.NODE_ENV == "test") {
   test.each([
-    ["15\n10", "5"],
-    ["0\n0", "0"],
-    ["5\n20", "-15"],
+    ["aabbbaad", "a2b3a2d1"],
+    ["aabbbbbbbbbbbbxyza", "a2b12x1y1z1a1"],
+    ["edcba", "e1d1c1b1a1"],
   ])("example %#", (input, expected) => {
     expect(main(input).toString()).toBe(expected);
   });

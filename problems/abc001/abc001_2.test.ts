@@ -2,7 +2,7 @@
 // https://atcoder.jp/contests/abc001/tasks/abc001_2
 // 2022-09-28T14:07:51.982Z
 
-function main(input: string) {
+export function main(input: string) {
   const m = +input;
   if (m < 100) return "00";
   if (m <= 5_000) return `${m / 100}`.padStart(2, "0");
@@ -13,7 +13,8 @@ function main(input: string) {
 
 if (require.main == module)
   console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
-else {
+
+if (process.env.NODE_ENV == "test") {
   test.each([
     ["15000", "65"],
     ["75000", "89"],
