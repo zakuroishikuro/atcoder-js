@@ -4,11 +4,10 @@
   "version": "0.1.0",
   "scripts": {
     "serve": "node _src/serve.js",
-    "jest": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
-    "vitest": "vitest problems --globals",
+    "jest": "jest --watch",
+    "vivitest": "vitest problems --globals --globals",
     "test:util": "vitest util",
-    "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js",
-    "test:note": "jest --roots note --watch"
+    "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js"
   },
   "dependencies": {
     "@types/jest": "^29.1.2",
@@ -24,3 +23,4 @@
     "vitest": "^0.24.1"
   }
 }
+
