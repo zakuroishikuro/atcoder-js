@@ -17,7 +17,7 @@ const dfs = (tree, targetPos, pos = 1, prevPos = -1, visited = []) => {
   return visited;
 };
 
-function main(input = "") {
+export function main(input: string) {
   const data = input.split(/\n/).map((row) => row.split(/\s/).map(Number));
   const [vertices, firstVertex, targetVertex] = data.shift();
 
@@ -30,19 +30,13 @@ function main(input = "") {
   return dfs(tree, targetVertex, firstVertex).join(" ");
 }
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  test("stub", () => {
-    expect().toBe();
-  });
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-  [
+if (process.env.NODE_ENV == "test") {
+  test.each([
     ["5 2 5\n1 2\n1 3\n3 4\n3 5", "2 1 3 5"],
     ["6 1 2\n3 1\n2 5\n1 2\n4 1\n2 6", "1 2"],
-  ].forEach(([input, output], i) => {
-    test(`example #${i + 1}`, () => {
-      expect(`${main(input)}`).toBe(output);
-    });
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }

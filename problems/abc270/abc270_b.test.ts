@@ -3,7 +3,7 @@
 // 2022-09-24T12:10:19.290Z
 const { abs, sign } = Math;
 
-function main(input = "") {
+export function main(input: string) {
   const [goal, wall, hammer] = input.split(/\s/).map(Number);
 
   // ゴールが壁と逆方向にあればOK
@@ -22,20 +22,14 @@ function main(input = "") {
   return abs(goal);
 }
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  test("stub", () => {
-    expect().toBe();
-  });
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-  [
+if (process.env.NODE_ENV == "test") {
+  test.each([
     ["10 -10 1", "10"],
     ["20 10 -10", "40"],
     ["100 1 1000", "-1"],
-  ].forEach(([input, output], i) => {
-    test(`example #${i + 1}`, () => {
-      expect(`${main(input)}`).toBe(output);
-    });
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }
