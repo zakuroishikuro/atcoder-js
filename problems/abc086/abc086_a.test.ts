@@ -1,26 +1,19 @@
-// A - Product
-// https://atcoder.jp/contests/abc086/tasks/abc086_a
-// 2022-10-10T12:45:53.603Z
+// subject: A - Product
+// url: https://atcoder.jp/contests/abc086/tasks/abc086_a
+// timestamp: 2022-09-21T14:09:52.248Z
 
-//
-// ＼( 'ω')／ウオオオオアアーーーッッ！！！
-//
-export function solve(input: string) {
+export function main(input: string) {
   const [a, b] = input.split(/\s/).map(Number);
   return ["Even", "Odd"][(a * b) & 1];
 }
 
-// deno-fmt-ignore
-if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim()).toString());
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-// ------------------------
-// ＼( 'ω')／テストッッ！！！
-// ------------------------
-if (process.env.VITEST) {
-  const { test, expect } = import.meta.vitest;
+if (process.env.NODE_ENV == "test") {
   test.each([
-    ["3 4", "Even"], ["1 21", "Odd"]
-  ])("example %#:\n---input---\n%s\n-----------", (input, expected) => {
-    expect(solve(input).toString()).toBe(expected);
+    ["3 4", "Even"],
+    ["1 21", "Odd"],
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }
