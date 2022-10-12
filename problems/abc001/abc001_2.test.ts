@@ -11,8 +11,7 @@ export function main(input: string) {
   return 89;
 }
 
-if (require.main == module)
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 if (process.env.NODE_ENV == "test") {
   test.each([

@@ -6,8 +6,7 @@ export function main(input: string) {
   return input.replace(/(.)\1*/g, (m, a) => a + m.length);
 }
 
-if (require.main == module)
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 if (process.env.NODE_ENV == "test") {
   test.each([

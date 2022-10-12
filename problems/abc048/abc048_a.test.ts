@@ -1,19 +1,18 @@
-// A - 積雪深差
-// https://atcoder.jp/contests/abc001/tasks/abc001_1
-// 2022-09-28T14:02:53.981Z
+// A - AtCoder *** Contest
+// https://atcoder.jp/contests/abc048/tasks/abc048_a
+// 2022-09-30T13:46:29.674Z
 
 export function main(input: string) {
-  const [h1, h2] = input.split(/\s/).map(Number);
-  return h1 - h2;
+  return input.replace(/(?:(\w)\S*\s*)/g, "$1");
 }
 
 if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 if (process.env.NODE_ENV == "test") {
   test.each([
-    ["15\n10", "5"],
-    ["0\n0", "0"],
-    ["5\n20", "-15"],
+    ["AtCoder Beginner Contest", "ABC"],
+    ["AtCoder Snuke Contest", "ASC"],
+    ["AtCoder X Contest", "AXC"],
   ])("example %#", (input, expected) => {
     expect(main(input).toString()).toBe(expected);
   });
