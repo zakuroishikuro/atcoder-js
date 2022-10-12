@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "node _src/serve.js",
     "jest": "jest --watch --testMatch '<rootDir>/problems/**/*.[jt]s?(x)'",
-    "test": "vitest problems",
+    "vitest": "vitest problems --globals",
     "test:util": "vitest util",
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js",
     "test:note": "jest --roots note --watch"
