@@ -4,11 +4,12 @@
 
 // 無理や
 
-function main(input = "") {
+export function main(input: string) {
   const cells = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
 
   const rowBounds = cells.map((row) => {
-    let min = 100, max = 0;
+    let min = 100,
+      max = 0;
     row.forEach((n) => {
       min = Math.min(min, n);
       max = Math.max(max, n);
@@ -16,7 +17,8 @@ function main(input = "") {
     return [min, max];
   });
   const colBounds = [...Array(3)].map((_, i) => {
-    let min = 100, max = 0;
+    let min = 100,
+      max = 0;
     cells.forEach((row) => {
       min = Math.min(min, row[i]);
       max = Math.max(max, row[i]);
@@ -35,29 +37,15 @@ function main(input = "") {
   return "Yes";
 }
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  const examples = [
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+
+if (process.env.NODE_ENV == "test") {
+  test.each([
     ["1 0 1\n2 1 2\n1 0 1", "Yes"],
     ["2 2 2\n2 1 2\n2 2 2", "No"],
     ["0 8 8\n0 8 8\n0 8 8", "Yes"],
     ["1 8 6\n2 9 7\n0 7 7", "No"],
-  ];
-
-  if (process.env.NEKO == "cat") {
-    const idx = process.argv[2] || 1;
-    const input = examples[idx - 1][0];
-    console.log(`----- 🐈 example #${idx}:\n${input}\n----- output:\n${main(input)}\n-----\n`);
-  } else {
-    examples.forEach(([input, output], i) => {
-      test(`example #${i + 1}`, () => {
-        expect(`${main(input)}`).toBe(output);
-      });
-    });
-
-    test("stub", () => {
-      expect().toBe();
-    });
-  }
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
+  });
 }
