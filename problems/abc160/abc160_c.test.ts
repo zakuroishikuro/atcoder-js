@@ -2,10 +2,7 @@
 // https://atcoder.jp/contests/abc160/tasks/abc160_c
 // 2022-10-10T06:00:55.585Z
 
-//
-// ＼( 'ω')／ウオオオオアアーーーッッ！！！
-//
-export function solve(input: string) {
+export function main(input: string) {
   const [K, N, ...A] = input.split(/\s/).map(Number);
 
   let max = 0;
@@ -18,20 +15,15 @@ export function solve(input: string) {
   return K - max;
 }
 
-// deno-fmt-ignore
-if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim().toString()));
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-// ------------------------
-// ＼( 'ω')／テストッッ！！！
-// ------------------------
-if (process.env.VITEST) {
-  const { test, expect } = import.meta.vitest;
+if (process.env.NODE_ENV == "test") {
   test.each([
     ["20 3\n5 10 15", "10"],
     ["20 3\n0 5 15", "10"],
     ["100 3\n0 1 2", "2"],
     ["100 3\n0 1 99", "2"],
-  ])("example %#:\n---input---\n%s\n-----------", (input, expected) => {
-    expect(solve(input).toString()).toBe(expected);
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }
