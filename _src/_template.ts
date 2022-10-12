@@ -10,7 +10,8 @@ export function main(input: string) {
 
 if (require.main == module)
   console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
-else {
+
+if (process.env.NODE_ENV == "test") {
   test.each([
     /*examples*/
   ])("example %#", (input, expected) => {
