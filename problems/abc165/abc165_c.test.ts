@@ -26,36 +26,27 @@ function rec(A = [], n = 0, m = 0, matrix = []) {
   return max;
 }
 
-function main(input = "") {
+export function main(input: string) {
   const [[n, m, _q], ...data] = input.split(/\n/).map((row) => row.split(/\s/).map(Number));
 
   const A = [];
   return rec(A, n, m, data);
 }
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  const examples = [
+
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+
+if (process.env.NODE_ENV == "test") {
+  test.each([
     ["3 4 3\n1 3 3 100\n1 2 2 10\n2 3 2 10", "110"],
     ["4 6 10\n2 4 1 86568\n1 4 0 90629\n2 3 0 90310\n3 4 1 29211\n3 4 3 78537\n3 4 2 8580\n1 2 1 96263\n1 4 2 2156\n1 2 0 94325\n1 4 3 94328", "357500"],
     ["10 10 1\n1 10 9 1", "1"],
-  ];
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
+  });
 
-  if (process.env.NEKO == "cat") {
-    const idx = process.argv[2] || 1;
-    const input = examples[idx - 1][0];
-    console.log(`----- 🐈 example #${idx}:\n${input}\n----- output:\n${main(input)}\n-----\n`);
-  } else {
-    examples.forEach(([input, output], i) => {
-      test(`example #${i + 1}`, () => {
-        expect(`${main(input)}`).toBe(output);
-      });
-    });
-
-    test("calc", () => {
-      const actual = calc([1, 3, 4], [[1, 3, 3, 100], [1, 2, 2, 10], [2, 3, 2, 10]]);
-      expect(actual).toBe(110);
-    });
-  }
+  test("calc", () => {
+    const actual = calc([1, 3, 4], [[1, 3, 3, 100], [1, 2, 2, 10], [2, 3, 2, 10]]);
+    expect(actual).toBe(110);
+  });
 }

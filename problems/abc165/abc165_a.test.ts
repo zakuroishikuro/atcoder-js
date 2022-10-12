@@ -1,27 +1,21 @@
-// A - We Love Golf
-// https://atcoder.jp/contests/abc165/tasks/abc165_a
-// 2022-10-10T13:52:08.029Z
+// subject: A - We Love Golf
+// url: https://atcoder.jp/contests/abc165/tasks/abc165_a
+// timestamp: 2022-09-21T14:39:05.412Z
 
-//
-// ＼( 'ω')／ウオオオオアアーーーッッ！！！
-//
-export function solve(input: string) {
+export function main(input: string) {
   const [K, A, B] = input.split(/\s/).map(Number);
   const min = Math.ceil(A / K);
   return min * K <= B ? "OK" : "NG";
 }
 
-// deno-fmt-ignore
-if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim()).toString());
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-// ------------------------
-// ＼( 'ω')／テストッッ！！！
-// ------------------------
-if (process.env.VITEST) {
-  const { test, expect } = import.meta.vitest;
+if (process.env.NODE_ENV == "test") {
   test.each([
-    ["7\n500 600", "OK"], ["4\n5 7", "NG"], ["1\n11 11", "OK"]
-  ])("example %#:\n---input---\n%s\n-----------", (input, expected) => {
-    expect(solve(input).toString()).toBe(expected);
+    ["7\n500 600", "OK"],
+    ["4\n5 7", "NG"],
+    ["1\n11 11", "OK"],
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }
