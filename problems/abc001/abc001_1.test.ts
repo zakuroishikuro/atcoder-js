@@ -7,8 +7,8 @@ function main(input: string) {
   return h1 - h2;
 }
 
-if (process.env.NODE_ENV != "test")
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
+if (require.main == module)
+  console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 else {
   test.each([
     ["15\n10", "5"],
