@@ -2,6 +2,8 @@
 // https://atcoder.jp/contests/abc115/tasks/abc115_c
 // 2022-09-25T08:50:22.120Z
 
+// むり
+
 export function main(input: string) {
   const [n, k, ...data] = input.split(/\s/).map(Number);
   data.sort((a, b) => b - a);
