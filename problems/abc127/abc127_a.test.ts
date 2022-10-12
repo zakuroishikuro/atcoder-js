@@ -1,28 +1,22 @@
-// A - Ferris Wheel
-// https://atcoder.jp/contests/abc127/tasks/abc127_a
-// 2022-10-10T13:31:30.923Z
+// subject: A - Ferris Wheel
+// url: https://atcoder.jp/contests/abc127/tasks/abc127_a
+// timestamp: 2022-09-21T14:23:41.977Z
 
-//
-// ＼( 'ω')／ウオオオオアアーーーッッ！！！
-//
-export function solve(input: string) {
-  const [A, B] = input.split(/\s/).map(Number);
-  if (A <= 5) return 0;
-  if (A <= 12) return B >> 1;
-  return B;
+export function main(input: string) {
+  let [age, cost] = input.split(/\s/).map(Number);
+  if (age <= 5) cost = 0;
+  if (age <= 12) cost /= 2;
+  return cost;
 }
 
-// deno-fmt-ignore
-if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim()).toString());
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-// ------------------------
-// ＼( 'ω')／テストッッ！！！
-// ------------------------
-if (process.env.VITEST) {
-  const { test, expect } = import.meta.vitest;
+if (process.env.NODE_ENV == "test") {
   test.each([
-    ["30 100","100"],["12 100","50"],["0 100","0"]
-  ])("example %#:\n---input---\n%s\n-----------", (input, expected) => {
-    expect(solve(input).toString()).toBe(expected);
+    ["30 100", "100"],
+    ["12 100", "50"],
+    ["0 100", "0"],
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }
