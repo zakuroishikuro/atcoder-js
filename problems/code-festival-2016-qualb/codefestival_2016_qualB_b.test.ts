@@ -2,10 +2,7 @@
 // https://atcoder.jp/contests/code-festival-2016-qualb/tasks/codefestival_2016_qualB_b
 // 2022-10-09T14:47:32.158Z
 
-//
-// ＼( 'ω')／ウオオオオアアーーーッッ！！！
-//
-export function solve(input: string) {
+export function main(input: string) {
   const data = input.split(/\s/);
   const S = data.pop();
   const [N, A, B] = data.map(Number);
@@ -27,19 +24,14 @@ export function solve(input: string) {
   return res.join("\n");
 }
 
-// deno-fmt-ignore
-if (!process.env.VITEST) console.log(solve(require("fs").readFileSync(0, "utf8").trim().toString()));
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-// ------------------------
-// ＼( 'ω')／テストッッ！！！
-// ------------------------
-if (process.env.VITEST) {
-  const { test, expect } = import.meta.vitest;
+if (process.env.NODE_ENV == "test") {
   test.each([
-    //["10 2 3\nabccabaabb", "Yes\nYes\nNo\nNo\nYes\nYes\nYes\nNo\nNo\nNo"],
+    ["10 2 3\nabccabaabb", "Yes\nYes\nNo\nNo\nYes\nYes\nYes\nNo\nNo\nNo"],
     ["12 5 2\ncabbabaacaba", "No\nYes\nYes\nYes\nYes\nNo\nYes\nYes\nNo\nYes\nNo\nNo"],
-    //["5 2 2\nccccc", "No\nNo\nNo\nNo\nNo"],
-  ])("example %#:\n---input---\n%s\n-----------", (input, expected) => {
-    expect(solve(input).toString()).toBe(expected);
+    ["5 2 2\nccccc", "No\nNo\nNo\nNo\nNo"],
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }
