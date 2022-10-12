@@ -1,9 +1,9 @@
 // C - GeT AC
 // https://atcoder.jp/contests/abc122/tasks/abc122_c
 // 2022-09-24T06:35:19.945Z
-// ATCODER入門 P.202 
+// ATCODER入門 P.202
 
-function main(input = "") {
+export function main(input: string) {
   const rows = input.split(/\n/).slice(1);
   const s = rows.shift().trim();
   const queries = rows.map((s) => s.trim().split(/\s/).map(Number));
@@ -18,21 +18,13 @@ function main(input = "") {
   const output = queries.map(([left, right]) => {
     return cs[right] - cs[left];
   });
-  return output.join(",");
+  return output.join("\n");
 }
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  test("stub", () => {
-    expect().toBe();
-  });
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
-  [
-    ["8 3\nACACTACG\n3 7\n2 3\n1 8", "2\n0\n3"],
-  ].forEach(([input, output], i) => {
-    test(`example #${i + 1}`, () => {
-      expect(`${main(input)}`).toBe(output);
-    });
+if (process.env.NODE_ENV == "test") {
+  test.each([["8 3\nACACTACG\n3 7\n2 3\n1 8", "2\n0\n3"]])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
   });
 }
