@@ -1,9 +1,8 @@
-javascript:
-(async () => {
+javascript: (async () => {
   const PORT = 37564;
 
   const m = /https:\/\/atcoder.jp\/contests\/([-\w]+)\/tasks\/([-\w]+)/.exec(
-    location.href,
+    location.href
   );
   if (m) {
     const examples = [];

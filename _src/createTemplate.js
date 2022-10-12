@@ -6,14 +6,11 @@ const TEMPLATE_PATH = path.join(__dirname, "/_template.ts");
 const prepareTemplate = (problem) => {
   // サーバー再起動せず変更したいので毎回読み込みなおす
   const template = fs.readFileSync(TEMPLATE_PATH, "utf8");
-  return Object.entries(problem).reduce(
-    (t, [k, v]) => {
-      // JSONにして外側のカッコ・クォートをはずす (テンプレ側に書くため)
-      v = JSON.stringify(v).replace(/^["[{]|["\]}]$/g, "");
-      return t.replace(`/*${k}*/`, v);
-    },
-    template,
-  );
+  return Object.entries(problem).reduce((t, [k, v]) => {
+    // JSONにして外側のカッコ・クォートをはずす (テンプレ側に書くため)
+    v = JSON.stringify(v).replace(/^["[{]|["\]}]$/g, "");
+    return t.replace(`/*${k}*/`, v);
+  }, template);
 };
 
 const createTemplate = (problem) => {
