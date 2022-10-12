@@ -1,12 +1,18 @@
 // D - Grid Repainting
 // https://atcoder.jp/contests/abc088/tasks/abc088_d
 // 2022-09-28T15:44:42.349Z
-function main(input = "") {
+
+export function main(input: string) {
   const rows = input.split(/\n/);
   const [_H, _W] = rows.shift().split(/\s/).map(Number);
   const field = rows;
 
-  const directions = [[-1, 0], [0, 1], [1, 0], [0, -1]];
+  const directions = [
+    [-1, 0],
+    [0, 1],
+    [1, 0],
+    [0, -1],
+  ];
 
   const dist = field.map(() => Array(_W).fill(-1));
   dist[0][0] = 0;
@@ -34,10 +40,10 @@ function main(input = "") {
   return _H * _W - shortest - blocked - 1;
 }
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  const examples = [
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+
+if (process.env.NODE_ENV == "test") {
+  test.each([
     ["2 2\n..\n..", "1"],
     ["3 3\n..#\n#..\n...", "2"],
     [`50 50\n${(".".repeat(50) + "\n").repeat(50).trim()}`, "2401"],
@@ -46,21 +52,7 @@ if (process.env.NODE_ENV != "test") {
       "10 37\n.....................................\n...#...####...####..###...###...###..\n..#.#..#...#.##....#...#.#...#.#...#.\n..#.#..#...#.#.....#...#.#...#.#...#.\n.#...#.#..##.#.....#...#.#.###.#.###.\n.#####.####..#.....#...#..##....##...\n.#...#.#...#.#.....#...#.#...#.#...#.\n.#...#.#...#.##....#...#.#...#.#...#.\n.#...#.####...####..###...###...###..\n.....................................",
       "209",
     ],
-  ];
-
-  if (process.env.NEKO == "cat") {
-    const idx = process.argv[2] || 1;
-    const input = examples[idx - 1][0];
-    console.log(`----- 🐈 example #${idx}:\n${input}\n----- output:\n${main(input)}\n-----\n`);
-  } else {
-    examples.forEach(([input, output], i) => {
-      test(`example #${i + 1}`, () => {
-        expect(`${main(input)}`).toBe(output);
-      });
-    });
-
-    test("stub", () => {
-      expect().toBe();
-    });
-  }
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
+  });
 }
