@@ -42,11 +42,12 @@ function eat(n, x, burgers) {
   return eat(n - 1, x - len - 2, burgers) + pat + 1;
 }
 
-function main(input = "") {
+export function main(input: string) {
   const [n, x] = input.split(/\s/).map(Number);
 
   const burgers = [];
-  let len = 1, pat = 1;
+  let len = 1,
+    pat = 1;
   for (let i = 1; i <= n; i++) {
     burgers.push([len, pat]);
     len = len * 2 + 3;
@@ -56,21 +57,18 @@ function main(input = "") {
   return eat(n, x, burgers);
 }
 
-if (process.env.NODE_ENV != "test") {
-  console.log(main(require("fs").readFileSync(0, "utf8").trim()));
-} else {
-  const examples = [
+if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+
+if (process.env.NODE_ENV == "test") {
+  test.each([
     ["2 7", "4"],
     ["1 1", "0"],
     ["50 4321098765432109", "2160549382716056"],
-  ];
+  ])("example %#", (input, expected) => {
+    expect(main(input).toString()).toBe(expected);
+  });
 
-  if (process.env.NEKO == "cat") {
-    const idx = process.argv[2] || 1;
-    const input = examples[idx - 1][0];
-    console.log(`----- 🐈 example #${idx}:\n${input}\n----- output:\n${main(input)}\n-----\n`);
-  } else {
-    /*
+  /*
     test("_cook", () => {
       expect(_cook(0)).toBe("P");
       expect(_cook(1)).toBe("_PPP_");
@@ -88,7 +86,7 @@ if (process.env.NODE_ENV != "test") {
       expect(calc(50)).toEqual([4503599627370493, 2251799813685247]);
     });*/
 
-    /*
+  /*
     test("_eat", () => {
       expect(_eat([[1, 1], [5, 3]], 1)).toEqual(0);
       expect(_eat([[1, 1], [5, 3]], 2)).toEqual(1);
@@ -96,11 +94,4 @@ if (process.env.NODE_ENV != "test") {
       expect(_eat([[1, 1], [5, 3]], 4)).toEqual(3);
       expect(_eat([[1, 1], [5, 3]], 5)).toEqual(3);
     });*/
-
-    examples.forEach(([input, output], i) => {
-      test(`example #${i + 1}`, () => {
-        expect(`${main(input)}`).toBe(output);
-      });
-    });
-  }
 }
