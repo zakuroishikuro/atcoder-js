@@ -54,7 +54,7 @@ export function main(input: string) {
 if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 if (process.env.NODE_ENV == "test") {
-  test.each([
+  test.skip.each([
     ["3 1", "0 1 2\n1 2 3\n2 3 4"],
     [
       "10 5",
