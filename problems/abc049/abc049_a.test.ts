@@ -1,19 +1,18 @@
-// B - Break Number
-// https://atcoder.jp/contests/abc068/tasks/abc068_b
-// 2022-10-10T05:51:19.217Z
+// A - 居合を終え、青い絵を覆う
+// https://atcoder.jp/contests/abc049/tasks/abc049_a
+// 2022-09-30T13:06:08.384Z
 
 export function main(input: string) {
-  return 1 << Math.floor(Math.log2(+input));
+  return "aiueo".includes(input) ? "vowel" : "consonant";
 }
 
 if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 if (process.env.NODE_ENV == "test") {
   test.each([
-    ["7", "4"],
-    ["32", "32"],
-    ["1", "1"],
-    ["100", "64"],
+    ["a", "vowel"],
+    ["z", "consonant"],
+    ["s", "consonant"],
   ])("example %#", (input, expected) => {
     expect(main(input).toString()).toBe(expected);
   });
