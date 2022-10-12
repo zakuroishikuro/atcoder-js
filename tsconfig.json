@@ -2,7 +2,8 @@
   "compilerOptions": {
     "types": [
       "node",
-      "vitest/importMeta"
+      "vitest/importMeta",
+      "jest"
     ],
     "module": "ESNext",
     "moduleResolution": "Node",
