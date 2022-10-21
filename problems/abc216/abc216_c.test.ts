@@ -3,8 +3,10 @@
 // 2022-10-20T15:00:13.199Z
 
 export function main(input: string) {
+  // 10^15以上は即BigInt
   let N = BigInt(input);
 
+  // 逆から考える
   let spell = "";
   while (N > 1) {
     if (N & 1n) {
