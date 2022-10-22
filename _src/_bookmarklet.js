@@ -5,7 +5,9 @@ javascript: (async () => {
   if (m) {
     const examples = [];
     const parent = document.querySelector(".lang-ja") || document;
-    parent.querySelectorAll("[id^=pre-sample], ol.linenums").forEach((e, i) => {
+    let pre = parent.querySelectorAll("[id^=pre-sample], ol.linenums");
+    if (pre.length == 0) pre = document.querySelectorAll("#task-statement > .part pre");
+    pre.forEach((e, i) => {
       let text;
       if (e.children.length > 0) {
         text = [...e.children].map((c) => c.textContent).join("\n");
