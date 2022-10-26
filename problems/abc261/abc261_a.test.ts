@@ -9,7 +9,6 @@ const { min, max } = Math;
 
 export function main(input: string) {
   const [a_, _a, b_, _b] = input.split(/\s/).map(Number);
-
   return max(min(_b, _a) - max(a_, b_), 0);
 }
 

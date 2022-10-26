@@ -1,21 +1,19 @@
-// A - World Cup
-// https://atcoder.jp/contests/abc262/tasks/abc262_a
-// 2022-10-16T12:46:53.021Z
+// A - Median?
+// https://atcoder.jp/contests/abc253/tasks/abc253_a
+// 2022-10-26T14:05:07.271Z
 
 export function main(input: string) {
-  const Y = +input;
-  const mod = Y % 4;
-  if (mod <= 2) return Y + (2 - mod);
-  return Y + 3;
+  const nums = input.split(/\s/).map(Number);
+  return nums[1] == nums.sort((a, b) => a - b)[1] ? "Yes" : "No";
 }
 
 if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 if (process.env.NODE_ENV == "test") {
   test.each([
-    ["2022", "2022"],
-    ["2023", "2026"],
-    ["3000", "3002"],
+    ["5 3 2", "Yes"],
+    ["2 5 3", "No"],
+    ["100 100 100", "Yes"],
   ])("example %#", (input, expected) => {
     expect(main(input).toString()).toBe(expected);
   });
