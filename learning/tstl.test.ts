@@ -121,6 +121,29 @@ test("equal_range", () => {
   expect(second.index()).toBe(6);
 });
 
+// 連番
+test("iota", () => {
+  const vec = new std.Vector(10, 0);
+  std.iota(vec.begin(), vec.end(), 1);
+  expect([...vec]).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+});
+
+// ranges.iota。こっちはArrayとかそのまま使える。たぶんrangesの他も同じ感じ
+test("ranges.iota", () => {
+  const arr = Array(10);
+  std.ranges.iota(arr, 1);
+  expect(arr).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+});
+
+test("lower_bound", () => {
+  const arr = [1, 3, 5, 7, 9, 9, 51, 101];
+  expect(std.ranges.lower_bound(arr, 3).value).toBe(3);
+  expect(std.ranges.lower_bound(arr, 4).value).toBe(5);
+
+  const vec = new std.Vector(arr);
+  expect(std.lower_bound(vec.begin(), vec.end(), 3).value).toBe(3);
+  expect(std.lower_bound(vec.begin(), vec.end(), 4).value).toBe(5);
+});
 
 // gcd, lcm
 // max, max_element
@@ -132,4 +155,3 @@ test("equal_range", () => {
 // rbegin, rend
 
 //remove, remove_if, remove_copy
-
