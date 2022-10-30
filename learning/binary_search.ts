@@ -1,20 +1,15 @@
 //二分探索アルゴリズムを一般化 〜 めぐる式二分探索法のススメ 〜
 //https://qiita.com/drken/items/97e37dd6143e33a64c8c
 
-const isOK = <T>(index: number, key: T, values: T[]) => {
-  if (values[index] >= key) {
-    return true;
-  } else {
-    return false;
-  }
-};
+//javascript-algorithms/binarySearch.js at master · trekhleb/javascript-algorithms
+//https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/search/binary-search/binarySearch.js
 
-const binary_search = <T>(key: T, values: T[]) => {
+const binarySearch = <T>(values: Array<T>, value: T, comp = (a: T, b: T) => a >= b) => {
   let left = -1;
   let right = values.length;
-  while (right - left > 1) {
-    const mid = Math.floor(left + (right - left) / 2);
-    if (isOK(mid, key, values)) right = mid;
+  while (left <= right) {
+    const mid = left + Math.floor((right - left) / 2);
+    if (comp(values[mid], value)) right = mid;
     else left = mid;
   }
   return right;
