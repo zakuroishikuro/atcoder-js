@@ -1,20 +1,22 @@
-// A51 - Stack
-// https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_ay
-// 2022-10-31T12:46:07.501Z
+// A52 - Queue
+// https://atcoder.jp/contests/tessoku-book/tasks/tessoku_book_az
+// 2022-10-31T14:08:10.467Z
+
+import { Queue } from "tstl";
 
 export function main(input: string) {
-  const ans = [];
+  const ans: string[] = [];
 
-  const stack = [];
+  const que = new Queue<string>();
   for (const line of input.split(/\n/).slice(1)) {
     const [q, name] = line.split(/\s/);
     if (q == "1") {
-      stack.push(name);
+      que.push(name);
     } else if (q == "2") {
-      const name = stack[stack.length - 1];
+      const name = que.front();
       ans.push(name);
     } else if (q == "3") {
-      stack.pop();
+      que.pop();
     }
   }
   return ans.join("\n");
@@ -23,7 +25,7 @@ export function main(input: string) {
 if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
 
 if (process.env.NODE_ENV == "test") {
-  test.each([["5\n1 futuremap\n1 howtospeak\n2\n3\n2", "howtospeak\nfuturemap"]])("example %#", (input, expected) => {
+  test.each([["5\n1 taro\n1 hanako\n2\n3\n2", "taro\nhanako"]])("example %#", (input, expected) => {
     expect(main(input).toString()).toBe(expected);
   });
 }
