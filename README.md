@@ -45,3 +45,11 @@ AtCoderのNode.jsはv12だけどv14からしか動かないライブラリ使っ
 
 気になるのはこれらが使えないことぐらい
 `Array#at` / `??` / `?.` / `??=`
+
+# 再帰上限について
+
+wsl2の.bashrcで`ulimit -s 100000`しておく
+package.jsonのnpm scriptsでjest実行時のスタックサイズを増やしてるのでローカルならスタックオーバーフローにならない
+`node --stack-size=99900 ./node_modules/.bin/jest --watch`にしてる
+AtCoderでの実行時にはchild_processでスタックサイズを増やすようテンプレに書いておく
+(child_processでスクリプト自信を実行しつつjestのテストもファイル自体に含めるのわりと難しいからこうする)
