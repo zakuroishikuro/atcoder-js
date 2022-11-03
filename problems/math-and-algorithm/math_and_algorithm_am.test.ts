@@ -5,25 +5,26 @@
 function main(input: string) {
   const [[N, M], ...edges] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
 
-  const graph = [...Array(M + 2)].map(() => []);
-  for (const [a, b] of edges) {
+  const graph = [...Array(N + 1)].map(() => []);
+  for (let [a, b] of edges) {
     graph[a].push(b);
     graph[b].push(a);
   }
 
-  const visited = new Set();
+  const visited = new Uint8Array(N + 1);
+  visited[0] = 1;
 
   const dfs = (pos: number) => {
-    visited.add(pos);
-    for (const next of graph[pos]) {
-      if (!visited.has(next)) {
-        dfs(next);
+    visited[pos] = 1;
+    for (const adj of graph[pos]) {
+      if (!visited[adj]) {
+        dfs(adj);
       }
     }
   };
   dfs(1);
 
-  return `The graph is ${visited.size != N ? "not " : ""}connected.`;
+  return `The graph is ${visited.includes(0) ? "not " : ""}connected.`;
 }
 
 if (require.main == module) {
