@@ -4,7 +4,7 @@
 
 export function main(input: string) {
   const [A, B] = input.split(/\s/).map(Number);
-  //const [[_N, _K], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
+  //const [[N, M], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
   return A;
 }
 
