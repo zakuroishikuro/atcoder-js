@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node", "vitest/importMeta", "jest"],
+    "types": ["node", "jest"],
     "module": "commonjs",
     "moduleResolution": "Node",
     "target": "ESNext",
