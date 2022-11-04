@@ -2,28 +2,25 @@
 // https://atcoder.jp/contests/abc228/tasks/abc228_b
 // 2022-11-02T13:35:04.518Z
 
-import { Queue } from "tstl";
-
 export function main(input: string) {
   const [N, X, ...A] = input.split(/\s/).map(Number);
 
-  // 再帰dfsでやったらREになった。たぶんスタックの限界
-  const visited = new Set<number>();
-  const stack: number[] = [];
-  stack.push(X);
-  while (stack.length > 0) {
-    const p = stack.pop();
-    visited.add(p);
-    const friend = A[p - 1];
-    if (!visited.has(friend)) {
-      stack.push(friend);
+  const friends = new Set();
+  const dfs = (pos: number) => {
+    if (!friends.has(pos)) {
+      friends.add(pos);
+      dfs(A[pos - 1]);
     }
-  }
+  };
+  dfs(X);
 
-  return visited.size;
+  return friends.size;
 }
 
-if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+if (require.main == module) {
+  if (process.send) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+  else require("child_process").fork(__filename, { execArgv: ["--stack-size=99900"] });
+}
 
 if (process.env.NODE_ENV == "test") {
   test.each([
