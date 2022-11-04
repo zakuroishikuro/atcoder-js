@@ -9,11 +9,8 @@ export function main(input: string) {
 }
 
 if (require.main == module) {
-  if (!process.argv.includes("f")) {
-    require("child_process").fork(__filename, ["f"], { execArgv: ["--stack-size=99900"] });
-  } else {
-    console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
-  }
+  if (process.send) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+  else require("child_process").fork(__filename, { execArgv: ["--stack-size=99900"] });
 }
 
 if (process.env.NODE_ENV == "test") {
