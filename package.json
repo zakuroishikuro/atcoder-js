@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "serve": "node _src/serve.js",
-    "jest": "node --stack-size=99900 ./node_modules/.bin/jest --watch",
+    "jest": "node --stack-size=99900 ./node_modules/jest/bin/jest.js --watch",
     "test:util": "vitest util",
     "build:bookmarklet": "esbuild _src/_bookmarklet.js --minify-whitespace --outfile=bookmarklet.js"
   },
