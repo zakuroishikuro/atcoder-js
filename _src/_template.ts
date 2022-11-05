@@ -2,13 +2,9 @@
 // /*url*/
 // /*timestamp*/
 
-const toNum = Number; // 制約 <= 10e15 ? Number : BigInt
-type num = ReturnType<typeof toNum>;
-const parseVector = (s: string) => s.split(/\s/).map((s: string) => (isNaN(+s) ? s : toNum(s)));
-const parseMatrix = (s: string) => s.split(/\s/).map(parseVector);
-
 export function main(input: string) {
-  const [A, B] = parseVector(input) as num[];
+  const [A, B] = input.split(/\s/).map(Number);
+  //const [[N, M], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number)); //(s: string) => (isNaN(+s) ? s : Num(s))
   return A;
 }
 
