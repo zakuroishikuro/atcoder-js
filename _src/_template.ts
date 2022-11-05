@@ -2,11 +2,13 @@
 // /*url*/
 // /*timestamp*/
 
-const parseVector = (s: string) => s.split(/\s/).map((s) => (isNaN(+s) ? s : Number(s)));
-const parseMatrix = (s: string) => s.split(/\n/).map(parseVector);
+const toNum = Number; // 制約 <= 10e15 ? Number : BigInt
+type num = ReturnType<typeof toNum>;
+const parseVector = (s: string) => s.split(/\s/).map((s: string) => (isNaN(+s) ? s : toNum(s)));
+const parseMatrix = (s: string) => s.split(/\s/).map(parseVector);
 
 export function main(input: string) {
-  const [A, B] = parseVector(input) as number[];
+  const [A, B] = parseVector(input) as num[];
   return A;
 }
 
