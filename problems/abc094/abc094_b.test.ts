@@ -2,18 +2,18 @@
 // https://atcoder.jp/contests/abc094/tasks/abc094_b
 // 2022-10-11T00:15:15.802Z
 
-import { Vector, lower_bound } from "tstl";
+import { ranges } from "tstl";
 
-export function main(input: string) {
+export function main(input: string): number | string {
   const [N, M, X, ...A] = input.split(/\s/).map(Number);
-
-  const vec = new Vector(A);
-  const idx = lower_bound(vec.begin(), vec.end(), X).index();
-
+  const idx = ranges.lower_bound(A, X).index();
   return Math.min(idx, M - idx);
 }
 
-if (require.main == module) console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
+if (require.main == module) {
+  if (process.send) console.log(main(require("fs").readFileSync(0, "utf8").trim()) + "");
+  else require("child_process").fork(__filename, { execArgv: ["--stack-size=99900"] });
+}
 
 if (process.env.NODE_ENV == "test") {
   test.each([
