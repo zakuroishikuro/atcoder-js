@@ -2,14 +2,13 @@
 // /*url*/
 // /*timestamp*/
 
-export function main(input: string) {
+export function main(input: string): number | string {
   const [A, B] = input.split(/\s/).map(Number);
-  //const [[N, M], ...data] = input.split(/\n/).map((r) => r.split(/\s/).map(Number)); //(s: string) => (isNaN(+s) ? s : Num(s))
-  return A;
+  return input;
 }
 
 if (require.main == module) {
-  if (process.send) console.log(main(require("fs").readFileSync(0, "utf8").trim()) + "");
+  if (process.send) console.log(main(require("fs").readFileSync(0, "utf8").trim()));
   else require("child_process").fork(__filename, { execArgv: ["--stack-size=99900"] });
 }
 
@@ -17,6 +16,6 @@ if (process.env.NODE_ENV == "test") {
   test.each([
     /*examples*/
   ])("example %#", (input, expected) => {
-    expect(main(input) + "").toBe(expected);
+    expect(main(input)).toBe(expected);
   });
 }
