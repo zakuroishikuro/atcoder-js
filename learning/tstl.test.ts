@@ -145,13 +145,31 @@ test("lower_bound", () => {
   expect(std.lower_bound(vec.begin(), vec.end(), 4).value).toBe(5);
 });
 
+test("min, max, min_element, max_element", () => {
+  const arr = [10, 1, 3, 5, 7, 9, 9, 51, 101, 10]; // binary searchではない O(N)
+  expect(std.max(arr)).toBe(101);
+  expect(std.ranges.max_element(arr).value).toBe(101); //イテレータを返す
+
+  expect(std.min(arr)).toBe(1);
+  expect(std.ranges.min_element(arr).value).toBe(1);
+});
+
+test("minmax, minmax_element", () => {
+  const arr = [10, 1, 3, 5, 7, 9, 9, 51, 101, 10]; // binary searchではない O(N)
+  expect(std.minmax(arr, std.less)).toEqual({ first: 1, second: 101 }); // なぜかstd.lessは省略不可
+  const {first, second} = std.ranges.minmax_element(arr);
+  expect(first.value).toEqual(1);
+  expect(second.value).toEqual(101);
+});
+
+console.log(require);
+
 // gcd, lcm
-// max, max_element
-// min, min_element
 // minmax, minmax_element
 // lower_bound, upper_bound
 // make_pair
 // randint
 // rbegin, rend
+// is_permutation, next_permutation, prev_permutation
 
 //remove, remove_if, remove_copy
