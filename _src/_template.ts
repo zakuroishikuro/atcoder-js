@@ -15,6 +15,7 @@ if (__filename.endsWith(".js")) {
     /*examples*/
   ].forEach(([input, expected], i) => {
     const actual = main(input).toString();
+    console.log({ i, input, expected, actual });
     console.assert(actual == expected, { i, input, expected, actual });
   });
 }
