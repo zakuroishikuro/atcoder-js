@@ -18,7 +18,32 @@ module.exports = (register, helpers) => {
           return helpers.asData({
             kind: { graph: true },
             nodes: [...Array(data.length)].map((_, i) => ({ id: `${i + 1}`, label: `${i + 1}` })),
-            edges: data.map(([a, b]) => ({ from: `${a}`, to: `${b}` })),
+            edges: data.map(([a, b]) => ({
+              from: `${a}`,
+              to: `${b}`,
+            })),
+          });
+        },
+      });
+    },
+  });
+
+  register({
+    id: "showGrid",
+    getExtractions(data, collector) {
+      if (!Array.isArray(data)) return;
+      if (!Array.isArray(data[0])) return;
+
+      collector.addExtraction({
+        priority: 1000,
+        id: "showGrid",
+        name: "グリッド表示",
+        extractData() {
+          return helpers.asData({
+            kind: { grid: true },
+            rows: data.map((row) => {
+              return { columns: row.map((col) => ({ content: `${col}` })) };
+            }),
           });
         },
       });

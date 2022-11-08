@@ -3,7 +3,8 @@
 // 2022-11-02T22:19:15.474Z
 
 function main(input: string) {
-  const [[N, M], ...edges] = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
+  const matrix = input.split(/\n/).map((r) => r.split(/\s/).map(Number));
+  const [[N, M], ...edges] = matrix;
 
   const graph = [...Array(N + 1)].map(() => []);
   for (let [a, b] of edges) {
@@ -27,19 +28,15 @@ function main(input: string) {
   return `The graph is ${visited.includes(0) ? "not " : ""}connected.`;
 }
 
-if (require.main == module) {
-  if (!process.argv.includes("f")) {
-    require("child_process").fork(__filename, ["f"], { execArgv: ["--stack-size=99900"] });
-  } else {
-    console.log(main(require("fs").readFileSync(0, "utf8").trim()).toString());
-  }
-}
-
-if (process.env.NODE_ENV == "test") {
-  test.each([
+if (__filename.endsWith(".js")) {
+  if (process.send) console.log(main(require("fs").readFileSync(0, "utf8").trim()));
+  else require("child_process").fork(__filename, { execArgv: ["--stack-size=99900"] });
+} else {
+  [
     ["3 2\n1 3\n2 3", "The graph is connected."],
-    //["6 6\n1 4\n2 3\n3 4\n5 6\n1 2\n2 4", "The graph is not connected."],
-  ])("example %#", (input, expected) => {
-    expect(main(input).toString()).toBe(expected);
+    ["6 6\n1 4\n2 3\n3 4\n5 6\n1 2\n2 4", "The graph is not connected."],
+  ].forEach(([input, expected], i) => {
+    const actual = main(input).toString();
+    console.assert(actual == expected, { i, input, expected, actual });
   });
 }
