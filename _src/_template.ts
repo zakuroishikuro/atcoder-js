@@ -13,9 +13,8 @@ if (__filename.endsWith(".js")) {
 } else {
   [
     /*examples*/
-  ].forEach(([input, expected], i) => {
-    const actual = main(input).toString();
-    console.log({ i, input, expected, actual });
-    console.assert(actual == expected, { i, input, expected, actual });
+  ].forEach(([input, e], i) => {
+    const a = main(input).toString();
+    if (a != e) console.error(`failed !`, { i, input, e, a });
   });
 }
