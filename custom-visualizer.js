@@ -9,6 +9,8 @@ module.exports = (register, helpers) => {
     id: "showGraph",
     getExtractions(data, collector) {
       if (!Array.isArray(data)) return;
+      const current = data["current"];
+      const next = data["next"];
 
       collector.addExtraction({
         priority: 1000,
@@ -17,11 +19,19 @@ module.exports = (register, helpers) => {
         extractData() {
           return helpers.asData({
             kind: { graph: true },
-            nodes: [...Array(data.length)].map((_, i) => ({ id: `${i + 1}`, label: `${i + 1}` })),
-            edges: data.map(([a, b]) => ({
-              from: `${a}`,
-              to: `${b}`,
-            })),
+            nodes: [...Array(data.length)].map((_, pos) => {
+              return { id: `${pos}`, color: current == pos ? "red" : "#D2E5FF" };
+            }),
+            edges: data.flatMap((adjList, pos) =>
+              adjList.map((adj) => {
+                const color = current == pos ? (next == adj ? "red" : "orange") : "#2B7CE9";
+                return {
+                  from: `${pos}`,
+                  to: `${adj}`,
+                  color,
+                };
+              }),
+            ),
           });
         },
       });
