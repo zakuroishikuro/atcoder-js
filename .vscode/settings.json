@@ -1,3 +1,6 @@
 {
-  "debugVisualizer.js.customScriptPaths": ["${workspaceFolder}/custom-visualizer.js"]
+  "debugVisualizer.js.customScriptPaths": [
+    "${workspaceFolder}/custom-visualizer.js"
+  ],
+  "deno.enable": false
 }
