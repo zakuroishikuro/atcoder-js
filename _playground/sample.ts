@@ -1,21 +1,9 @@
-Object.assign(Object.prototype, {
-  log<T>(this: T) {
-    console.log(this.toString());
-    return this;
-  },
-});
+const DEBUG = process.env.NODE_ENV === "test";
+Object.assign(Object.prototype,{log<T>(this:T,msg="log"){if(DEBUG)console.log(`[${msg}] ${this}`);return this}}) // prettier-ignore
+declare global { interface Object{log<T>(this:T):T} } // prettier-ignore
 
-interface Object {
-  log<T>(this: T): T;
+export function main() {
+  "abcd".log().slice(1).log().slice(1).log();
 }
 
-const yea = "abc".log().slice(1).log();
-console.log(yea);
-
-const p = process;
-
-console.log(process.execPath);
-console.log(process.execArgv);
-console.log(process.argv);
-console.log(process.argv0);
-console.log(process.arch);
+main();
