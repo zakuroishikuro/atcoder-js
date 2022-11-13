@@ -2,7 +2,7 @@
 // /*url*/
 // /*timestamp*/
 
-interface Object { log<T>(this: T): T } // prettier-ignore
+declare global {interface Object { log<T>(this: T): T }} // prettier-ignore
 
 export function main(input: string): number | string {
   const [A, B] = input.split(/\s/).map(Number);
