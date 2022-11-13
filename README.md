@@ -13,6 +13,9 @@ jestとvitestとjavascriptとtypescriptを混在させてカオスになった
 
 jest使うのはやめた。VSCode + F5でデバッグできる。
 
+ここにもちょっとまとめた
+https://gist.github.com/zakuroishikuro/55b9d17a9e58abfa9bc3fa0477c281ad
+
 # インストール
 
 [pnpm](https://pnpm.io/ja/installation) で依存ライブラリをインストール
@@ -35,12 +38,7 @@ javascript:(async()=>{const PORT=37564;const m=/https:\/\/atcoder.jp\/contests\/
 `pnpm serve`: [問題のページ](https://atcoder.jp/contests/practice/tasks/practice_1)で実行されたブックマークレットからのデータを受け取る
 JavaScriptのテンプレが作成されVSCodeで開く
 
-`pnpm test`: problemsフォルダで変更があったファイルがテストされる ([jest --watch](https://jestjs.io/ja/docs/cli#:~:text=name%2Dof%2Dspec-,%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%3A,-jest%20%2D%2Dwatch%20%23%20%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88))
-(Ctrl+zだとVSCodeが自動で開かないので、VSCodeでターミナル追加起動するといいかも？)
-
-`pnpm min`: problems内の最後に保存したファイルをminifyして表示
-
-`pnpm debug 1`: 最終更新ファイルで例題1を実行する。JavaScript Debug Terminalで実行すること
+VSCode + F5でデバッグ。
 
 # Node.js のバージョンについて
 
@@ -48,12 +46,11 @@ AtCoderのNode.jsはv12だけどv14からしか動かないライブラリ使っ
 文法的にv18とそこまで変わらないので何とかなる
 
 気になるのはこれらが使えないことぐらい
-`Array#at` / `??` / `?.` / `??=`
+`Array#at` / `??` / `?.` / `??=` / `||=` / `&&=`
 
 # 再帰上限について
 
 wsl2の.bashrcで`ulimit -s 100000`しておく
 package.jsonのnpm scriptsでjest実行時のスタックサイズを増やしてるのでローカルならスタックオーバーフローにならない
-`node --stack-size=99900 ./node_modules/.bin/jest --watch`にしてる
 AtCoderでの実行時にはchild_processでスタックサイズを増やすようテンプレに書いておく
-(child_processでスクリプト自信を実行しつつjestのテストもファイル自体に含めるのわりと難しいからこうする)
+(child_processでスクリプト自身を実行しつつjestのテストもファイル自体に含めるのわりと難しいからこうする)
