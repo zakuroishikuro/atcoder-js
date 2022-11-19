@@ -2,12 +2,6 @@
 // /*url*/
 // /*timestamp*/
 
-// スタック上限拡張
-if (process.execArgv.every((a) => !a.includes("--stack-size="))) {
-  require("child_process").execFileSync(process.argv0, ["--stack-size=99900", ...process.execArgv, __filename], { stdio: "inherit" });
-  process.exit(0);
-}
-
 export function main(input: string): number | string {
   const [A, B] = input.split(/\s/).map(Number);
   return input;
