@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const TEMPLATE_PATH = path.join(__dirname, "/_template.ts");
+const TEMPLATE_PATH = path.join(__dirname, "/_template.test.ts");
 const FILENAME_SUFFIX = ".forked.ts";
 
 const prepareTemplate = (problem) => {
