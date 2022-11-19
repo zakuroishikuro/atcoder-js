@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const TEMPLATE_PATH = path.join(__dirname, "/_template.ts");
-const FILENAME_SUFFIX = ".test.ts";
+const FILENAME_SUFFIX = ".forked.ts";
 
 const prepareTemplate = (problem) => {
   // サーバー再起動せず変更したいので毎回読み込みなおす
